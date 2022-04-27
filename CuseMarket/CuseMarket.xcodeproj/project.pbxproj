@@ -13,6 +13,7 @@
 		311E509827FDFD13002A64F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311E509627FDFD13002A64F7 /* Main.storyboard */; };
 		311E509A27FDFD14002A64F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311E509927FDFD14002A64F7 /* Assets.xcassets */; };
 		311E509D27FDFD14002A64F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311E509B27FDFD14002A64F7 /* LaunchScreen.storyboard */; };
+		31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB42819F71A00F32F09 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		311E509927FDFD14002A64F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		311E509C27FDFD14002A64F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		311E509E27FDFD14002A64F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31FE1CB42819F71A00F32F09 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				311E509927FDFD14002A64F7 /* Assets.xcassets */,
 				311E509B27FDFD14002A64F7 /* LaunchScreen.storyboard */,
 				311E509E27FDFD14002A64F7 /* Info.plist */,
+				31FE1CB42819F71A00F32F09 /* LoginViewController.swift */,
 			);
 			path = CuseMarket;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */,
 				311E509527FDFD13002A64F7 /* ViewController.swift in Sources */,
 				311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */,
 				311E509327FDFD13002A64F7 /* SceneDelegate.swift in Sources */,
