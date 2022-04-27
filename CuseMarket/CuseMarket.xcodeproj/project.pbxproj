@@ -14,6 +14,11 @@
 		311E509A27FDFD14002A64F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311E509927FDFD14002A64F7 /* Assets.xcassets */; };
 		311E509D27FDFD14002A64F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311E509B27FDFD14002A64F7 /* LaunchScreen.storyboard */; };
 		31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB42819F71A00F32F09 /* LoginViewController.swift */; };
+		31FE1CB72819FC5D00F32F09 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */; };
+		31FE1CB92819FC7900F32F09 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB82819FC7900F32F09 /* MarketViewController.swift */; };
+		31FE1CBB2819FC9100F32F09 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CBA2819FC9100F32F09 /* ProfileViewController.swift */; };
+		31FE1CBD2819FCB400F32F09 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CBC2819FCB400F32F09 /* ProductViewController.swift */; };
+		31FE1CBF2819FCC200F32F09 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CBE2819FCC200F32F09 /* ListingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		311E509C27FDFD14002A64F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		311E509E27FDFD14002A64F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31FE1CB42819F71A00F32F09 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		31FE1CB82819FC7900F32F09 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		31FE1CBA2819FC9100F32F09 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		31FE1CBC2819FCB400F32F09 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		31FE1CBE2819FCC200F32F09 /* ListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +70,17 @@
 			children = (
 				311E509027FDFD13002A64F7 /* AppDelegate.swift */,
 				311E509227FDFD13002A64F7 /* SceneDelegate.swift */,
+				31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */,
+				31FE1CBE2819FCC200F32F09 /* ListingViewController.swift */,
+				31FE1CB42819F71A00F32F09 /* LoginViewController.swift */,
+				31FE1CB82819FC7900F32F09 /* MarketViewController.swift */,
+				31FE1CBC2819FCB400F32F09 /* ProductViewController.swift */,
+				31FE1CBA2819FC9100F32F09 /* ProfileViewController.swift */,
 				311E509427FDFD13002A64F7 /* ViewController.swift */,
 				311E509627FDFD13002A64F7 /* Main.storyboard */,
 				311E509927FDFD14002A64F7 /* Assets.xcassets */,
 				311E509B27FDFD14002A64F7 /* LaunchScreen.storyboard */,
 				311E509E27FDFD14002A64F7 /* Info.plist */,
-				31FE1CB42819F71A00F32F09 /* LoginViewController.swift */,
 			);
 			path = CuseMarket;
 			sourceTree = "<group>";
@@ -141,9 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31FE1CBF2819FCC200F32F09 /* ListingViewController.swift in Sources */,
+				31FE1CB72819FC5D00F32F09 /* CreateAccountViewController.swift in Sources */,
 				31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */,
 				311E509527FDFD13002A64F7 /* ViewController.swift in Sources */,
 				311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */,
+				31FE1CBB2819FC9100F32F09 /* ProfileViewController.swift in Sources */,
+				31FE1CB92819FC7900F32F09 /* MarketViewController.swift in Sources */,
+				31FE1CBD2819FCB400F32F09 /* ProductViewController.swift in Sources */,
 				311E509327FDFD13002A64F7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
