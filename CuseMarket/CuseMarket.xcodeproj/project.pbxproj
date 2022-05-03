@@ -20,6 +20,7 @@
 		311CD12A281CB6C900F94ED0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 311CD129281CB6C900F94ED0 /* FirebaseStorage */; };
 		311CD12C281CB6C900F94ED0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 311CD12B281CB6C900F94ED0 /* FirebaseStorageCombine-Community */; };
 		311CD12E281CB6C900F94ED0 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 311CD12D281CB6C900F94ED0 /* FirebaseStorageSwift-Beta */; };
+		311CD1312820CC2400F94ED0 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CD1302820CC2400F94ED0 /* ForgotViewController.swift */; };
 		311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E509027FDFD13002A64F7 /* AppDelegate.swift */; };
 		311E509327FDFD13002A64F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E509227FDFD13002A64F7 /* SceneDelegate.swift */; };
 		311E509527FDFD13002A64F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E509427FDFD13002A64F7 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311CD1302820CC2400F94ED0 /* ForgotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		311E508D27FDFD13002A64F7 /* CuseMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuseMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		311E509027FDFD13002A64F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		311E509227FDFD13002A64F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		311CD12F2820C37D00F94ED0 /* LoginSystem */ = {
+			isa = PBXGroup;
+			children = (
+				31FE1CB42819F71A00F32F09 /* LoginViewController.swift */,
+				31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */,
+				311CD1302820CC2400F94ED0 /* ForgotViewController.swift */,
+			);
+			path = LoginSystem;
+			sourceTree = "<group>";
+		};
 		311E508427FDFD13002A64F7 = {
 			isa = PBXGroup;
 			children = (
@@ -102,11 +114,10 @@
 		311E508F27FDFD13002A64F7 /* CuseMarket */ = {
 			isa = PBXGroup;
 			children = (
+				311CD12F2820C37D00F94ED0 /* LoginSystem */,
 				311E509027FDFD13002A64F7 /* AppDelegate.swift */,
 				311E509227FDFD13002A64F7 /* SceneDelegate.swift */,
 				311E509427FDFD13002A64F7 /* ViewController.swift */,
-				31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */,
-				31FE1CB42819F71A00F32F09 /* LoginViewController.swift */,
 				31FE1CB82819FC7900F32F09 /* MarketViewController.swift */,
 				594BF055281F14570029CE4F /* Listing Scene */,
 				59DA5820281F0122002238E9 /* Product Scene */,
@@ -235,6 +246,7 @@
 				594BF054281F139B0029CE4F /* ListingCollectionViewCell.swift in Sources */,
 				59DA5828281F016E002238E9 /* Product.swift in Sources */,
 				311E509527FDFD13002A64F7 /* ViewController.swift in Sources */,
+				311CD1312820CC2400F94ED0 /* ForgotViewController.swift in Sources */,
 				311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */,
 				59DA5824281F0144002238E9 /* ProfileViewController.swift in Sources */,
 				31FE1CB92819FC7900F32F09 /* MarketViewController.swift in Sources */,

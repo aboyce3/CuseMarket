@@ -1,13 +1,13 @@
 //
-//  LoginViewController.swift
+//  ForgotViewController.swift
 //  CuseMarket
 //
-//  Created by Andrew Boyce on 4/27/22.
+//  Created by Andrew Boyce on 5/2/22.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class ForgotViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
