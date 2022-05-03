@@ -61,15 +61,15 @@ class CreateAccountViewController: UIViewController {
                         
                     } else {
                         if self.sendVerificationMail() {
+                            self.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(["firstName" : firstName.text!, "lastName" : lastName.text!, "email" : self.email.text!, "username" : self.username.text!])
                             let dialogMessage = UIAlertController(title: "Confirm", message: "Once your email is verified you may sign in.", preferredStyle: .alert)
                             
                             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                                print("Ok button tapped")
+                                self.performSegue(withIdentifier: "returnSegue", sender: self)
                              })
                             dialogMessage.addAction(ok)
                             self.present(dialogMessage, animated: true, completion: nil)
-                            self.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(["firstName" : firstName.text!, "lastName" : lastName.text!, "email" : self.email.text!, "username" : self.username.text!])
-                            self.performSegue(withIdentifier: "loginReturnSegue", sender: self)
+                            
                             return
                         } else {
                             errorLabel.text = "Email is already verified, try a different email!"

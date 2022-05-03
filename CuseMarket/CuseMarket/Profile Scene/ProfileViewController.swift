@@ -7,7 +7,8 @@
 
 import UIKit
 import Firebase
-
+import FirebaseAuth
+import FirebaseStorage
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var inboxButtion: UIButton!
@@ -15,21 +16,29 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var sellingButton: UIButton!
     @IBOutlet weak var buyingButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
-    
+    var storageRef = Storage.storage().reference()
     var observer: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let islandRef = storageRef.child("profilePictures/" + Auth.auth().currentUser!.uid + ".png")
+        islandRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+          if let error = error {
+              print(error.localizedDescription)
+          } else {
+              self.profileImageView.image = UIImage(data: data!)
+          }
+        }
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(gesture)
         
         observer = profileImageView.observe(\.image, options: [.old, .new], changeHandler: { imageView, _ in
-            guard let image = imageView.image else {
+            guard let _ = imageView.image else {
                 return
             }
-            self.uploadProfilePicture(with: image)
+            self.uploadProfilePicture()
         })
     }
     
@@ -37,8 +46,11 @@ class ProfileViewController: UIViewController {
         presentPhotoActionSheet()
     }
     
-    func uploadProfilePicture(with: UIImage) {
-        
+    func uploadProfilePicture() {
+        storageRef = Storage.storage().reference().child("profilePictures/" + Auth.auth().currentUser!.uid + ".png")
+        if let uploadData = self.profileImageView.image!.pngData() {
+                storageRef.putData(uploadData)
+        }
     }
     
 }

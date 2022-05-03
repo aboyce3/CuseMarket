@@ -120,7 +120,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                 <connections>
                                     <action selector="loginOnClick:" destination="mzq-ay-HGl" eventType="touchUpInside" id="ZS7-UI-itC"/>
-                                    <segue destination="2dJ-Ia-CYX" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="mdV-u4-Yci"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjw-JP-5b2">
@@ -164,6 +163,7 @@
                         <outlet property="email" destination="TGw-PK-vqd" id="5wi-hO-F7R"/>
                         <outlet property="password" destination="cdb-jl-7yX" id="Thy-Rh-Sxh"/>
                         <segue destination="SEE-sx-v5n" kind="show" identifier="createAccountSegue" id="Rbr-vi-PHZ"/>
+                        <segue destination="2dJ-Ia-CYX" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="HMj-zB-wVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuA-aw-Pff" sceneMemberID="firstResponder"/>
@@ -290,12 +290,12 @@
                         <outlet property="password" destination="JLj-yT-fTA" id="HEE-O2-szT"/>
                         <outlet property="passwordConfirm" destination="zaj-Pz-JYK" id="npL-h5-GXG"/>
                         <outlet property="username" destination="SSq-fM-Qcy" id="gEv-IG-opq"/>
-                        <segue destination="mzq-ay-HGl" kind="presentation" identifier="loginReturnSegue" modalPresentationStyle="fullScreen" id="UHF-XH-Vjy"/>
+                        <segue destination="mzq-ay-HGl" kind="presentation" identifier="returnSegue" modalPresentationStyle="fullScreen" id="UHF-XH-Vjy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7Y-YQ-bVn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="807.58928571428567"/>
+            <point key="canvasLocation" x="155" y="808"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="exJ-ZS-wTh">
@@ -316,7 +316,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1n-p3-eG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="71.651785714285708"/>
+            <point key="canvasLocation" x="155" y="72"/>
         </scene>
         <!--Market View Controller-->
         <scene sceneID="xde-Ty-foJ">

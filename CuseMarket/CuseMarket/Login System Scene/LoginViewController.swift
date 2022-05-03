@@ -22,13 +22,14 @@ class LoginViewController: UIViewController {
             if Auth.auth().currentUser != nil && Auth.auth().currentUser!.isEmailVerified {
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
                 } else {
-                    let dialogMessage = UIAlertController(title: "Confirm", message: "You have to verify your email first before logging in!", preferredStyle: .alert)
+                    let dialogMessage = UIAlertController(title: "Confirm", message: "You are either unverified or have incorrect credentials!", preferredStyle: .alert)
                     
                     let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                         print("Ok button tapped")
                      })
                     
                     dialogMessage.addAction(ok)
+                    self.present(dialogMessage, animated: true, completion: nil)
             }
         }
        
