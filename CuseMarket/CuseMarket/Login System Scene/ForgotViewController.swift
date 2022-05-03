@@ -31,12 +31,11 @@ class ForgotViewController: UIViewController {
               let dialogMessage = UIAlertController(title: "Confirm", message: "A password reset email has been sent!", preferredStyle: .alert)
               
               let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                  print("Ok button tapped")
+                  self.performSegue(withIdentifier: "loginReturnSegue", sender: self)
                })
               
               dialogMessage.addAction(ok)
               self.present(dialogMessage, animated: true, completion: nil)
-              self.performSegue(withIdentifier: "loginReturnSegue", sender: self)
           }
         }
     }
