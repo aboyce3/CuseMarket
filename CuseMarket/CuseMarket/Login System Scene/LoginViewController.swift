@@ -19,11 +19,16 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginOnClick(_ sender: Any) {
         Auth.auth().signIn(withEmail: (email.text ?? "None"), password: password.text ?? "Nothing") { (result, error) in
-            if error == nil{
-                print("Made it in!")
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
-            } else{
-                print("Didn't make it!")
+            if Auth.auth().currentUser != nil && Auth.auth().currentUser!.isEmailVerified {
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                } else {
+                    let dialogMessage = UIAlertController(title: "Confirm", message: "You have to verify your email first before logging in!", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                        print("Ok button tapped")
+                     })
+                    
+                    dialogMessage.addAction(ok)
             }
         }
        
