@@ -11,9 +11,13 @@ import Firebase
 class ListingViewController: UIViewController {
     
     var photos: [UIImage] = []
+    var product: Product?
 
     @IBOutlet weak var listingCollectionView: UICollectionView!
     //@IBOutlet weak var listingImageView: UIImageView!
+    @IBOutlet weak var TitleTextField: UITextField!
+    @IBOutlet weak var PriceTextField: UITextField!
+    @IBOutlet weak var DescriptionTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,47 @@ class ListingViewController: UIViewController {
     @objc func imageTapped() {
         presentPhotoActionSheet()
     }
-
+    
+    @IBAction func didTapCategory(_ sender: Any) {
+        let categoryAction = UIAlertController(title: "Choose Category", message: nil, preferredStyle: .actionSheet)
+        categoryAction.addAction(UIAlertAction(title: "Clothing", style: .default, handler: { action in
+            //product?.categroy = "Clothes"
+            categoryAction.dismiss(animated: true)
+        }))
+        categoryAction.addAction(UIAlertAction(title: "Furniture", style: .default, handler: { action in
+            //product?.categroy = "Clothes"
+            categoryAction.dismiss(animated: true)
+        }))
+        categoryAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(categoryAction, animated: true)
+    }
+    
+    @IBAction func didTapCondition(_ sender: Any) {
+        let conditionAction = UIAlertController(title: "Choose Category", message: nil, preferredStyle: .actionSheet)
+        conditionAction.addAction(UIAlertAction(title: "New", style: .default, handler: { action in
+            //product?.categroy = "Clothes"
+            conditionAction.dismiss(animated: true)
+        }))
+        conditionAction.addAction(UIAlertAction(title: "Used - Like new", style: .default, handler: { action in
+            //product?.categroy = "Clothes"
+            conditionAction.dismiss(animated: true)
+        }))
+        conditionAction.addAction(UIAlertAction(title: "Used - Good", style: .default, handler: { action in
+            //product?.categroy = "Clothes"
+            conditionAction.dismiss(animated: true)
+        }))
+        conditionAction.addAction(UIAlertAction(title: "Used - Fair", style: .default, handler: { action in
+            //product?.categroy = "Clothes"
+            conditionAction.dismiss(animated: true)
+        }))
+        conditionAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(conditionAction, animated: true)
+    }
+    
+    @IBAction func didTapListProduct(_ sender: Any) {
+        // upload product data to Firebase and dismiss the screen
+    }
+    
 }
 
 extension ListingViewController: UICollectionViewDataSource {

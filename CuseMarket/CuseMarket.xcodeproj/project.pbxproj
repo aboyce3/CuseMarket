@@ -28,6 +28,9 @@
 		31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB42819F71A00F32F09 /* LoginViewController.swift */; };
 		31FE1CB72819FC5D00F32F09 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */; };
 		31FE1CB92819FC7900F32F09 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB82819FC7900F32F09 /* MarketViewController.swift */; };
+		594BED642820C8E4007F788B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594BED632820C8E4007F788B /* BuyNowViewController.swift */; };
+		594BED662820C932007F788B /* MakeOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594BED652820C932007F788B /* MakeOfferViewController.swift */; };
+		594BED682820C984007F788B /* MassageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594BED672820C984007F788B /* MassageViewController.swift */; };
 		594BF052281F13970029CE4F /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594BF051281F13970029CE4F /* ListingViewController.swift */; };
 		594BF054281F139B0029CE4F /* ListingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594BF053281F139B0029CE4F /* ListingCollectionViewCell.swift */; };
 		59DA5824281F0144002238E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA5823281F0144002238E9 /* ProfileViewController.swift */; };
@@ -48,6 +51,9 @@
 		31FE1CB42819F71A00F32F09 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		31FE1CB82819FC7900F32F09 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		594BED632820C8E4007F788B /* BuyNowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNowViewController.swift; sourceTree = "<group>"; };
+		594BED652820C932007F788B /* MakeOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeOfferViewController.swift; sourceTree = "<group>"; };
+		594BED672820C984007F788B /* MassageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageViewController.swift; sourceTree = "<group>"; };
 		594BF051281F13970029CE4F /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 		594BF053281F139B0029CE4F /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
 		59DA5821281F0122002238E9 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +142,9 @@
 			children = (
 				59DA5821281F0122002238E9 /* ProductViewController.swift */,
 				59DA5822281F0122002238E9 /* ProductCollectionViewCell.swift */,
+				594BED632820C8E4007F788B /* BuyNowViewController.swift */,
+				594BED652820C932007F788B /* MakeOfferViewController.swift */,
+				594BED672820C984007F788B /* MassageViewController.swift */,
 			);
 			path = "Product Scene";
 			sourceTree = "<group>";
@@ -230,14 +239,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594BED682820C984007F788B /* MassageViewController.swift in Sources */,
 				31FE1CB72819FC5D00F32F09 /* CreateAccountViewController.swift in Sources */,
 				31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */,
+				594BED662820C932007F788B /* MakeOfferViewController.swift in Sources */,
 				594BF054281F139B0029CE4F /* ListingCollectionViewCell.swift in Sources */,
 				59DA5828281F016E002238E9 /* Product.swift in Sources */,
 				311E509527FDFD13002A64F7 /* ViewController.swift in Sources */,
 				311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */,
 				59DA5824281F0144002238E9 /* ProfileViewController.swift in Sources */,
 				31FE1CB92819FC7900F32F09 /* MarketViewController.swift in Sources */,
+				594BED642820C8E4007F788B /* BuyNowViewController.swift in Sources */,
 				311E509327FDFD13002A64F7 /* SceneDelegate.swift in Sources */,
 				59DA5826281F0148002238E9 /* LocationViewController.swift in Sources */,
 				594BF052281F13970029CE4F /* ListingViewController.swift in Sources */,
