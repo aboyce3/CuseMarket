@@ -85,14 +85,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		311CD12F2820C37D00F94ED0 /* LoginSystem */ = {
+		311CD12F2820C37D00F94ED0 /* Login System Scene */ = {
 			isa = PBXGroup;
 			children = (
 				31FE1CB42819F71A00F32F09 /* LoginViewController.swift */,
 				31FE1CB62819FC5D00F32F09 /* CreateAccountViewController.swift */,
 				311CD1302820CC2400F94ED0 /* ForgotViewController.swift */,
 			);
-			path = LoginSystem;
+			path = "Login System Scene";
+			sourceTree = "<group>";
+		};
+		311CD1322820D34600F94ED0 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				311E509227FDFD13002A64F7 /* SceneDelegate.swift */,
+				311E509027FDFD13002A64F7 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		311CD1332820D35F00F94ED0 /* Profile Scene */ = {
+			isa = PBXGroup;
+			children = (
+				59DA5825281F0148002238E9 /* LocationViewController.swift */,
+				59DA5823281F0144002238E9 /* ProfileViewController.swift */,
+			);
+			path = "Profile Scene";
 			sourceTree = "<group>";
 		};
 		311E508427FDFD13002A64F7 = {
@@ -114,21 +132,17 @@
 		311E508F27FDFD13002A64F7 /* CuseMarket */ = {
 			isa = PBXGroup;
 			children = (
-				311CD12F2820C37D00F94ED0 /* LoginSystem */,
-				311E509027FDFD13002A64F7 /* AppDelegate.swift */,
-				311E509227FDFD13002A64F7 /* SceneDelegate.swift */,
-				311E509427FDFD13002A64F7 /* ViewController.swift */,
-				31FE1CB82819FC7900F32F09 /* MarketViewController.swift */,
+				311CD1332820D35F00F94ED0 /* Profile Scene */,
+				311CD1322820D34600F94ED0 /* Delegates */,
+				311CD12F2820C37D00F94ED0 /* Login System Scene */,
 				594BF055281F14570029CE4F /* Listing Scene */,
 				59DA5820281F0122002238E9 /* Product Scene */,
-				59DA5823281F0144002238E9 /* ProfileViewController.swift */,
-				59DA5825281F0148002238E9 /* LocationViewController.swift */,
 				59DA5829281F0181002238E9 /* Main.storyboard */,
-				59DA5827281F016E002238E9 /* Product.swift */,
 				311E509927FDFD14002A64F7 /* Assets.xcassets */,
 				311E509B27FDFD14002A64F7 /* LaunchScreen.storyboard */,
 				59DA582B281F06B1002238E9 /* GoogleService-Info.plist */,
 				311E509E27FDFD14002A64F7 /* Info.plist */,
+				31FE1CB82819FC7900F32F09 /* MarketViewController.swift */,
 			);
 			path = CuseMarket;
 			sourceTree = "<group>";
@@ -145,6 +159,8 @@
 		59DA5820281F0122002238E9 /* Product Scene */ = {
 			isa = PBXGroup;
 			children = (
+				311E509427FDFD13002A64F7 /* ViewController.swift */,
+				59DA5827281F016E002238E9 /* Product.swift */,
 				59DA5821281F0122002238E9 /* ProductViewController.swift */,
 				59DA5822281F0122002238E9 /* ProductCollectionViewCell.swift */,
 			);

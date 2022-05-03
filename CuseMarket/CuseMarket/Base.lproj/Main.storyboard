@@ -14,17 +14,17 @@
             <objects>
                 <viewController id="Bl7-xs-XGM" customClass="ForgotViewController" customModule="CuseMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C2S-0e-kSI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cuse Market-logos_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="0t1-p4-i1o">
-                                <rect key="frame" x="-120.5" y="44" width="655" height="322"/>
+                                <rect key="frame" x="-120.5" y="-44" width="655" height="356"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="655" id="HIK-x7-XdV"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkP-4E-AvY">
-                                <rect key="frame" x="99" y="374" width="216" height="34"/>
+                                <rect key="frame" x="99" y="320" width="216" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Bn3-BG-BmR"/>
                                 </constraints>
@@ -32,13 +32,16 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDi-dA-5ur">
-                                <rect key="frame" x="123" y="413" width="147" height="31"/>
+                                <rect key="frame" x="123" y="359" width="147" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="dY3-jL-L9x"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Recover"/>
+                                <connections>
+                                    <action selector="recoverOnClick:" destination="Bl7-xs-XGM" eventType="touchUpInside" id="B9G-8E-UcU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xv8-0W-nix"/>
@@ -56,10 +59,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Nb0-xm-AXo"/>
+                    <connections>
+                        <outlet property="email" destination="nkP-4E-AvY" id="ic4-He-usW"/>
+                        <segue destination="mzq-ay-HGl" kind="presentation" identifier="loginReturnSegue" modalPresentationStyle="fullScreen" id="JpS-AP-orX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtT-vq-Gec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="-575"/>
+            <point key="canvasLocation" x="929" y="-652"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2Cd-wV-t9S">
@@ -70,7 +77,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cuse Market-logos_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="q34-XR-gpT">
-                                <rect key="frame" x="-120.5" y="82" width="655" height="322"/>
+                                <rect key="frame" x="-120.5" y="38" width="655" height="366"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="655" id="eI3-MX-SB2"/>
                                 </constraints>
@@ -161,18 +168,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuA-aw-Pff" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="71.651785714285708"/>
+            <point key="canvasLocation" x="929" y="72"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="Yd9-JP-K4L">
             <objects>
                 <viewController id="SEE-sx-v5n" customClass="CreateAccountViewController" customModule="CuseMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H6C-Yl-IyI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SSq-fM-Qcy">
-                                <rect key="frame" x="95" y="404" width="227" height="35"/>
+                                <rect key="frame" x="95" y="316" width="227" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="tOM-KR-oYL"/>
                                 </constraints>
@@ -180,7 +187,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCt-J5-tKi">
-                                <rect key="frame" x="95" y="450" width="227" height="34"/>
+                                <rect key="frame" x="95" y="362" width="227" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="LNV-uc-QDd"/>
                                 </constraints>
@@ -188,7 +195,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLj-yT-fTA">
-                                <rect key="frame" x="95" y="492" width="227" height="34"/>
+                                <rect key="frame" x="95" y="404" width="227" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="vdi-n7-UWX"/>
                                 </constraints>
@@ -196,7 +203,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQg-SX-yNH">
-                                <rect key="frame" x="95" y="319" width="227" height="34"/>
+                                <rect key="frame" x="95" y="231" width="227" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="53i-5J-fzD"/>
                                 </constraints>
@@ -204,7 +211,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2p-uK-LzR">
-                                <rect key="frame" x="95" y="363" width="227" height="33"/>
+                                <rect key="frame" x="95" y="275" width="227" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="xdx-D1-yfg"/>
                                 </constraints>
@@ -212,19 +219,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cuse Market-logos_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="VC7-h4-0Hc">
-                                <rect key="frame" x="-120.5" y="40" width="655" height="322"/>
+                                <rect key="frame" x="-120.5" y="-48" width="655" height="322"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="655" id="V3U-N7-Uk7"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXx-bd-YX6">
-                                <rect key="frame" x="95" y="609" width="224" height="50"/>
+                                <rect key="frame" x="95" y="521" width="224" height="84"/>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zaj-Pz-JYK">
-                                <rect key="frame" x="95" y="534" width="227" height="34"/>
+                                <rect key="frame" x="95" y="446" width="227" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Tzm-RR-G3b"/>
                                 </constraints>
@@ -1298,6 +1305,10 @@
             <point key="canvasLocation" x="3373.913043478261" y="-651.5625"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1J5-9g-tjk"/>
+        <segue reference="JpS-AP-orX"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Cuse Market-logos_transparent" width="1200" height="1200"/>
         <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
