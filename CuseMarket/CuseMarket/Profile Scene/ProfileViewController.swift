@@ -53,6 +53,14 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    @IBAction func logOutTapped(_ sender: Any) {
+        do {
+            try? Auth.auth().signOut()
+            let navViewController = self.storyboard?.instantiateViewController(withIdentifier: "LogInNav") as? UINavigationController
+            self.view.window?.rootViewController = navViewController
+            self.view.window?.makeKeyAndVisible()
+        }
+    }
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
