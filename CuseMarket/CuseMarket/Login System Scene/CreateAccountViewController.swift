@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+
 class CreateAccountViewController: UIViewController {
     
     @IBOutlet weak var firstName: UITextField!
@@ -20,7 +21,7 @@ class CreateAccountViewController: UIViewController {
     
     var ref = Database.database().reference()
     
-    private var authUser : User? {
+    private var authUser: User? {
         return Auth.auth().currentUser
     }
     
@@ -41,7 +42,7 @@ class CreateAccountViewController: UIViewController {
         return completed
     }
 
-    public func userNotExist() -> Bool{
+    public func userNotExist() -> Bool {
         var exists = true
         ref.child(username.text!).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
