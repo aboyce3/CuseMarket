@@ -245,7 +245,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                 <connections>
                                     <action selector="registerOnClick:" destination="SEE-sx-v5n" eventType="touchUpInside" id="cxl-cg-F7Y"/>
-                                    <segue destination="Bl7-xs-XGM" kind="show" identifier="returnSegue" id="QU2-44-MOV"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cuse Market-logos_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Xly-8I-4FZ">
@@ -296,6 +295,7 @@
                         <outlet property="password" destination="JLj-yT-fTA" id="HEE-O2-szT"/>
                         <outlet property="passwordConfirm" destination="zaj-Pz-JYK" id="npL-h5-GXG"/>
                         <outlet property="username" destination="SSq-fM-Qcy" id="gEv-IG-opq"/>
+                        <segue destination="Bl7-xs-XGM" kind="show" identifier="returnSegue" id="2QV-Mg-DkN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7Y-YQ-bVn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -311,6 +311,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" systemColor="systemOrangeColor"/>
                         </textAttributes>
                     </navigationBar>
@@ -1751,7 +1752,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="2kI-Bk-6JR"/>
-        <segue reference="1J5-9g-tjk"/>
+        <segue reference="2QV-Mg-DkN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Cuse Market-logos_transparent" width="1200" height="1200"/>
