@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import Photos
+import PhotosUI
 
 class ListingViewController: UIViewController {
     
@@ -14,10 +16,11 @@ class ListingViewController: UIViewController {
     var product: Product?
 
     @IBOutlet weak var listingCollectionView: UICollectionView!
-    //@IBOutlet weak var listingImageView: UIImageView!
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var PriceTextField: UITextField!
     @IBOutlet weak var DescriptionTextField: UITextField!
+    @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var conditionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +43,19 @@ class ListingViewController: UIViewController {
     @IBAction func didTapCategory(_ sender: Any) {
         let categoryAction = UIAlertController(title: "Choose Category", message: nil, preferredStyle: .actionSheet)
         categoryAction.addAction(UIAlertAction(title: "Clothing", style: .default, handler: { action in
-            //product?.categroy = "Clothes"
+            self.categoryButton.setTitle("Clothing", for: .normal)
             categoryAction.dismiss(animated: true)
         }))
         categoryAction.addAction(UIAlertAction(title: "Furniture", style: .default, handler: { action in
-            //product?.categroy = "Clothes"
+            self.categoryButton.setTitle("Furniture", for: .normal)
+            categoryAction.dismiss(animated: true)
+        }))
+        categoryAction.addAction(UIAlertAction(title: "Electronic", style: .default, handler: { action in
+            self.categoryButton.setTitle("Electronic", for: .normal)
+            categoryAction.dismiss(animated: true)
+        }))
+        categoryAction.addAction(UIAlertAction(title: "House", style: .default, handler: { action in
+            self.categoryButton.setTitle("House", for: .normal)
             categoryAction.dismiss(animated: true)
         }))
         categoryAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
@@ -54,19 +65,19 @@ class ListingViewController: UIViewController {
     @IBAction func didTapCondition(_ sender: Any) {
         let conditionAction = UIAlertController(title: "Choose Category", message: nil, preferredStyle: .actionSheet)
         conditionAction.addAction(UIAlertAction(title: "New", style: .default, handler: { action in
-            //product?.categroy = "Clothes"
+            self.conditionButton.setTitle("New", for: .normal)
             conditionAction.dismiss(animated: true)
         }))
         conditionAction.addAction(UIAlertAction(title: "Used - Like new", style: .default, handler: { action in
-            //product?.categroy = "Clothes"
+            self.conditionButton.setTitle("Used - Like new", for: .normal)
             conditionAction.dismiss(animated: true)
         }))
         conditionAction.addAction(UIAlertAction(title: "Used - Good", style: .default, handler: { action in
-            //product?.categroy = "Clothes"
+            self.conditionButton.setTitle("Used - Good", for: .normal)
             conditionAction.dismiss(animated: true)
         }))
         conditionAction.addAction(UIAlertAction(title: "Used - Fair", style: .default, handler: { action in
-            //product?.categroy = "Clothes"
+            self.conditionButton.setTitle("Used - Fair", for: .normal)
             conditionAction.dismiss(animated: true)
         }))
         conditionAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
@@ -97,7 +108,7 @@ extension ListingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ListingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ListingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
     func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(title: "Product Picture", message: "How would you like to select a picture", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -119,10 +130,9 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func presentPhotoPicker() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
+        let config = PHPickerConfiguration(photoLibrary: .shared())
+        let vc = PHPickerViewController(configuration: config)
         vc.delegate = self
-        vc.allowsEditing = true
         present(vc, animated: true)
     }
     
@@ -131,10 +141,23 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
-        //self.listingImageView.image = selectedImage
+        photos.append(selectedImage)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        results.forEach { result in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
+                guard let image = reading as? UIImage, error == nil else {
+                    return
+                }
+                self.photos.append(image)
+            }
+        }
     }
 }

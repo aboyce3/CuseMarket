@@ -45,7 +45,7 @@ class CreateAccountViewController: UIViewController {
     public func userNotExist() -> Bool {
         var exists = true
         ref.child(username.text!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists(){
+            if snapshot.exists() {
                 exists = false
             }
         })
@@ -84,5 +84,4 @@ class CreateAccountViewController: UIViewController {
             errorLabel.text = "Something was left blank!"
         }
     }
-
 }
