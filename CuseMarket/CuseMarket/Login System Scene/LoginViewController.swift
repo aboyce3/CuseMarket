@@ -34,8 +34,5 @@ class LoginViewController: UIViewController {
         }
        
     }
-    
-//    @IBAction func createAccountOnClick(_ sender: Any) {
-//        performSegue(withIdentifier: "createAccountSegue", sender: self)
-//    }
+
 }
