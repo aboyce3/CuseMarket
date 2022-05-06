@@ -10,13 +10,19 @@ import UIKit
 
 struct Product: Decodable {
     let title: String
-    let price: Int
+    let price: String
     let categroy: String
     let condition: String
-    //let location: String
+    //let latitude: String
+    //let longitude: String
     let description: String
-    let photos_path: String
-    let userID: UUID
+    let userID: String
+    let productID: String
+    var photos_path: String {
+        return "\(productID)_product_photo.png"
+    }
+    
+    //var photos_paths: [String]
 }
 
 class ProductList: Decodable {

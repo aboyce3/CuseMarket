@@ -1,5 +1,5 @@
 //
-//  MakeOfferViewController.swift
+//  MassageViewController.swift
 //  CuseMarket
 //
 //  Created by Zhiyi Chen on 5/2/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MakeOfferViewController: UIViewController {
+class MessageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +15,8 @@ class MakeOfferViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didTapOffer(_ sender: Any) {
+
+    @IBAction func didTapSend(_ sender: Any) {
     }
-    
+
 }

@@ -13,7 +13,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var ref = Database.database().reference()
     var currentUID = Auth.auth().currentUser!.uid
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var inboxTableView: UITableView!
     var results: [Message]?
     
     struct Message{
@@ -23,8 +23,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        inboxTableView.delegate = self
+        inboxTableView.dataSource = self
         getMessages()
         
     }
@@ -35,7 +35,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let text = results![indexPath.item].username! + ": " + results![indexPath.item].message!
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.inboxTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.backgroundColor = UIColor.systemTeal
         cell.textLabel?.text = text
@@ -57,7 +57,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.results?.append(completeMessage)
                     print(completeMessage.message!)
           }
-            self.tableView.reloadData()
+            self.inboxTableView.reloadData()
             
         }
     }
