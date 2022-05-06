@@ -32,7 +32,5 @@ class LoginViewController: UIViewController {
                     self.present(dialogMessage, animated: true, completion: nil)
             }
         }
-       
     }
-
 }

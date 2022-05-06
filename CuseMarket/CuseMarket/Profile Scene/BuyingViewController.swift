@@ -6,24 +6,30 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
-class BuyingViewController: UIViewController {
-
+class BuyingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var ref = Database.database().reference()
+    var currentUID = Auth.auth().currentUser!.uid
+    @IBOutlet weak var buyingTableView: UITableView!
+    var results: [Product]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        buyingTableView.delegate = self
+        buyingTableView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results!.count
     }
-    */
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BuyingCell", for: indexPath)
+        return cell
+    }
+    
 
 }

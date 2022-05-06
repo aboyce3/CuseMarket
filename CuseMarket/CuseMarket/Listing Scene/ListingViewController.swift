@@ -7,14 +7,16 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import Photos
 import PhotosUI
+import MapKit
+import CoreLocation
 
 class ListingViewController: UIViewController {
     
     var photos: [UIImage] = []
-    var product: Product?
-
+    
     @IBOutlet weak var listingCollectionView: UICollectionView!
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var PriceTextField: UITextField!
@@ -27,9 +29,10 @@ class ListingViewController: UIViewController {
         // CollectionView set up
         listingCollectionView.dataSource = self
         listingCollectionView.delegate = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        listingCollectionView.collectionViewLayout = layout
+        //let layout = UICollectionViewFlowLayout()
+        //layout.scrollDirection = .horizontal
+        //listingCollectionView.collectionViewLayout = layout
+        photos.append(UIImage(systemName: "camera")!)
         // ImageView set up
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         listingCollectionView.isUserInteractionEnabled = true
@@ -86,8 +89,35 @@ class ListingViewController: UIViewController {
     
     @IBAction func didTapListProduct(_ sender: Any) {
         // upload product data to Firebase and dismiss the screen
+        let db = Database.database().reference()
+        let productid = db.child("Products").childByAutoId().key
+        let listingProduct = Product(title: TitleTextField.text!,
+                                     price: PriceTextField.text!,
+                                     categroy: String(categoryButton.titleLabel!.text!), // unimplememted secne, user didn't choose category
+                                     condition: String(conditionButton.titleLabel!.text!),
+                                     //latitude: "0",
+                                     //longitude: "0",
+                                     description: DescriptionTextField.text!,
+                                     //photos_paths: ["1", "2"],
+                                     userID: Auth.auth().currentUser?.uid ?? "",
+                                     productID: productid!)
+        
+        DatabaseManager.shared.uploadProduct(with: listingProduct) { success in
+            if success {
+                // upload image
+                var count = 0
+                self.photos.forEach { photo in
+                    let imageid = String(count)
+                    StorageManager.shared.uploadProductImages(image: photo, productID: productid!, imageID: imageid)
+                    count += 1
+                }
+            }
+        }
+        // go back to Market
+        let navViewController = self.storyboard?.instantiateViewController(withIdentifier: "marketNav") as? UINavigationController
+        self.view.window?.rootViewController = navViewController
+        self.view.window?.makeKeyAndVisible()
     }
-    
 }
 
 extension ListingViewController: UICollectionViewDataSource {
@@ -97,6 +127,7 @@ extension ListingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCollectionViewCell", for: indexPath) as! ListingCollectionViewCell
+        // cell.setup(with: UIImage(named: "test")!)
         cell.setup(with: photos[indexPath.row])
         return cell
     }
@@ -104,7 +135,7 @@ extension ListingViewController: UICollectionViewDataSource {
 
 extension ListingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 300)
+        return CGSize(width: 200, height: 200)
     }
 }
 
@@ -130,7 +161,9 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func presentPhotoPicker() {
-        let config = PHPickerConfiguration(photoLibrary: .shared())
+        var config = PHPickerConfiguration(photoLibrary: .shared())
+        config.selectionLimit = 5
+        config.filter = .images
         let vc = PHPickerViewController(configuration: config)
         vc.delegate = self
         present(vc, animated: true)
@@ -142,6 +175,9 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         photos.append(selectedImage)
+        DispatchQueue.main.async {
+            self.listingCollectionView.reloadData()
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -150,13 +186,15 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
-        
         results.forEach { result in
             result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
                 guard let image = reading as? UIImage, error == nil else {
                     return
                 }
                 self.photos.append(image)
+                DispatchQueue.main.async {
+                    self.listingCollectionView.reloadData()
+                }
             }
         }
     }
