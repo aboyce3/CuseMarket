@@ -21,9 +21,7 @@ extension DatabaseManager {
             "price": product.price,
             "categroy": product.categroy,
             "condition": product.condition,
-            // let location: String
             "description": product.description,
-            // "photos_paths": [String]
             "userID": product.userID,
             "productID": product.productID
         ]) { error, _ in

@@ -12,10 +12,9 @@ class MarketCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var marketProductTitle: UILabel!
     @IBOutlet weak var marketProductPrice: UILabel!
     
-    // with image: UIImage,
-    func setup(with title: String, with price: String) {
-        //marketImageView.image = image
+    func setup(with image: UIImage, title: String, price: String) {
+        marketImageView.image = image
         marketProductTitle.text = title
-        marketProductTitle.text = "Price: $" + price
+        marketProductPrice.text = "Price: $" + price
     }
 }

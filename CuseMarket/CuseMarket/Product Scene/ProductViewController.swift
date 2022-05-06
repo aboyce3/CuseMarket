@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ProductViewController: UIViewController {
     
+    var productid: String?
     var photos: [UIImage] = []
+    var product: Product?
+    let db = Database.database().reference()
     
     @IBOutlet weak var productCollectionView: UICollectionView!
     @IBOutlet weak var productTitle: UILabel!
@@ -26,6 +30,48 @@ class ProductViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         productCollectionView.collectionViewLayout = layout
+        photos.append(UIImage(systemName: "camera")!)
+//        let id = (productid ?? "no data") as String
+//        print(id)
+        getProductDetails()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        StorageManager.shared.getProductImages(productID: productid!) { results in
+            self.photos = results!
+            DispatchQueue.main.async {
+                self.productCollectionView.reloadData()
+            }
+        }
+
+    }
+    
+    func getProductDetails(){
+        db.child("Products").child(productid!).observeSingleEvent(of: .value) { snapshot in
+            guard let snap = snapshot.value as? [String: Any] else { return }
+            self.productTitle.text = snap["title"] as? String
+            self.productPrice.text = snap["price"] as? String
+            self.productCondition.text = snap["condition"] as? String
+            self.productDescription.text = snap["description"] as? String
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If the triggered segue is the "showItem" segue
+        switch segue.identifier {
+        case "offerSegue":
+            let makeOfferViewController = segue.destination as! MakeOfferViewController
+            makeOfferViewController.productid = productid
+        case "messageSegue":
+            let messageViewController = segue.destination as! MessageViewController
+            messageViewController.productid = productid
+        case "buySegue":
+            let buyNowViewController = segue.destination as! BuyNowViewController
+            buyNowViewController.productid = productid
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
     }
 }
 

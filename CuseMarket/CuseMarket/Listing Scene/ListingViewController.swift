@@ -29,9 +29,10 @@ class ListingViewController: UIViewController {
         // CollectionView set up
         listingCollectionView.dataSource = self
         listingCollectionView.delegate = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        listingCollectionView.collectionViewLayout = layout
+        //let layout = UICollectionViewFlowLayout()
+        //layout.scrollDirection = .horizontal
+        //listingCollectionView.collectionViewLayout = layout
+        photos.append(UIImage(systemName: "camera")!)
         // ImageView set up
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         listingCollectionView.isUserInteractionEnabled = true
@@ -107,7 +108,7 @@ class ListingViewController: UIViewController {
                 var count = 0
                 self.photos.forEach { photo in
                     let imageid = String(count)
-                    StorageManager.shared.uploadProductImage(image: photo, productID: productid!, imageID: imageid)
+                    StorageManager.shared.uploadProductImages(image: photo, productID: productid!, imageID: imageid)
                     count += 1
                 }
             }
@@ -126,6 +127,7 @@ extension ListingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCollectionViewCell", for: indexPath) as! ListingCollectionViewCell
+        // cell.setup(with: UIImage(named: "test")!)
         cell.setup(with: photos[indexPath.row])
         return cell
     }
@@ -173,7 +175,9 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         photos.append(selectedImage)
-        // listingCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.listingCollectionView.reloadData()
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -188,7 +192,9 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
                     return
                 }
                 self.photos.append(image)
-                // self.listingCollectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.listingCollectionView.reloadData()
+                }
             }
         }
     }

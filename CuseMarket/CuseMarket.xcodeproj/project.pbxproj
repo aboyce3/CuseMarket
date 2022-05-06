@@ -23,7 +23,6 @@
 		311CD1312820CC2400F94ED0 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CD1302820CC2400F94ED0 /* ForgotViewController.swift */; };
 		311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E509027FDFD13002A64F7 /* AppDelegate.swift */; };
 		311E509327FDFD13002A64F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E509227FDFD13002A64F7 /* SceneDelegate.swift */; };
-		311E509527FDFD13002A64F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E509427FDFD13002A64F7 /* ViewController.swift */; };
 		311E509A27FDFD14002A64F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311E509927FDFD14002A64F7 /* Assets.xcassets */; };
 		311E509D27FDFD14002A64F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311E509B27FDFD14002A64F7 /* LaunchScreen.storyboard */; };
 		31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1CB42819F71A00F32F09 /* LoginViewController.swift */; };
@@ -37,6 +36,8 @@
 		595D6C922824894B0001C4EC /* MarketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D6C912824894B0001C4EC /* MarketCollectionViewCell.swift */; };
 		595D6C96282492390001C4EC /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D6C95282492390001C4EC /* DatabaseManager.swift */; };
 		595D6C982824D1990001C4EC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D6C972824D1990001C4EC /* StorageManager.swift */; };
+		595D6C99282522A90001C4EC /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA5821281F0122002238E9 /* ProductViewController.swift */; };
+		595D6C9A282522AB0001C4EC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA5822281F0122002238E9 /* ProductCollectionViewCell.swift */; };
 		59B2645D2822150B004F2F4F /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2645C2822150B004F2F4F /* InboxViewController.swift */; };
 		59B2645F28221532004F2F4F /* SellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2645E28221532004F2F4F /* SellingViewController.swift */; };
 		59B2646128221541004F2F4F /* BuyingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2646028221541004F2F4F /* BuyingViewController.swift */; };
@@ -52,7 +53,6 @@
 		311E508D27FDFD13002A64F7 /* CuseMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuseMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		311E509027FDFD13002A64F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		311E509227FDFD13002A64F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		311E509427FDFD13002A64F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		311E509927FDFD14002A64F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		311E509C27FDFD14002A64F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		311E509E27FDFD14002A64F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 		59DA5820281F0122002238E9 /* Product Scene */ = {
 			isa = PBXGroup;
 			children = (
-				311E509427FDFD13002A64F7 /* ViewController.swift */,
 				59DA5827281F016E002238E9 /* Product.swift */,
 				59DA5821281F0122002238E9 /* ProductViewController.swift */,
 				59DA5822281F0122002238E9 /* ProductCollectionViewCell.swift */,
@@ -294,7 +293,9 @@
 			files = (
 				594BED682820C984007F788B /* MessageViewController.swift in Sources */,
 				31FE1CB72819FC5D00F32F09 /* CreateAccountViewController.swift in Sources */,
+				595D6C9A282522AB0001C4EC /* ProductCollectionViewCell.swift in Sources */,
 				31FE1CB52819F71A00F32F09 /* LoginViewController.swift in Sources */,
+				595D6C99282522A90001C4EC /* ProductViewController.swift in Sources */,
 				595D6C982824D1990001C4EC /* StorageManager.swift in Sources */,
 				59B2645D2822150B004F2F4F /* InboxViewController.swift in Sources */,
 				594BED662820C932007F788B /* MakeOfferViewController.swift in Sources */,
@@ -302,7 +303,6 @@
 				59B2646128221541004F2F4F /* BuyingViewController.swift in Sources */,
 				594BF054281F139B0029CE4F /* ListingCollectionViewCell.swift in Sources */,
 				59DA5828281F016E002238E9 /* Product.swift in Sources */,
-				311E509527FDFD13002A64F7 /* ViewController.swift in Sources */,
 				311CD1312820CC2400F94ED0 /* ForgotViewController.swift in Sources */,
 				311E509127FDFD13002A64F7 /* AppDelegate.swift in Sources */,
 				595D6C96282492390001C4EC /* DatabaseManager.swift in Sources */,

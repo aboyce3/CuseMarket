@@ -9,9 +9,9 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var productImageView: UIImageView!
     
     func setup(with image: UIImage) {
-        photoImageView.image = image
+        productImageView.image = image
     }
 }

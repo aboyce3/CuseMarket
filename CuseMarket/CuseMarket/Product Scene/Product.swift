@@ -18,11 +18,7 @@ struct Product: Decodable {
     let description: String
     let userID: String
     let productID: String
-    var photos_path: String {
-        return "\(productID)_product_photo.png"
-    }
-    
-    //var photos_paths: [String]
+    // let isSold: Bool
 }
 
 class ProductList: Decodable {
