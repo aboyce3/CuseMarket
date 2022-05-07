@@ -15,14 +15,26 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     @IBAction func loginOnClick(_ sender: Any) {
         Auth.auth().signIn(withEmail: (email.text ?? "None"), password: password.text ?? "Nothing") { (result, error) in
-            if Auth.auth().currentUser != nil && Auth.auth().currentUser!.isEmailVerified {
+            if error != nil {
+                let dialogMessage = UIAlertController(title: "Confirm", message: "Check your credentials!", preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    print("Ok button tapped")
+                 })
+                
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+                return
+            }
+            if Auth.auth().currentUser!.isEmailVerified {
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
                 } else {
-                    let dialogMessage = UIAlertController(title: "Confirm", message: "You are either unverified or have incorrect credentials!", preferredStyle: .alert)
+                    let dialogMessage = UIAlertController(title: "Confirm", message: "Please verify your account and try again!", preferredStyle: .alert)
                     
                     let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                         print("Ok button tapped")
