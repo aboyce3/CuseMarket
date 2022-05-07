@@ -10,16 +10,17 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    var ref = Database.database().reference()
-    var currentUID = Auth.auth().currentUser!.uid
-    @IBOutlet weak var inboxTableView: UITableView!
-    var results: [Message]?
     
     struct Message{
-        let message:String?
-        let username:String?
+        let message: String
+        let username: String
+        let type: String
     }
+    let ref = Database.database().reference()
+    let currentUID = Auth.auth().currentUser!.uid
+    var results: [Message] = []
+    
+    @IBOutlet weak var inboxTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,35 +31,40 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results?.count ?? 0
+        // return 1
+        return results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let text = results![indexPath.item].username! + ": " + results![indexPath.item].message!
-        self.inboxTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = UIColor.systemTeal
-        cell.textLabel?.text = text
-        cell.backgroundColor = .orange
-        cell.textLabel?.textColor = .white
-        cell.selectionStyle = .none
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxCell", for: indexPath) as! InboxTableViewCell
+        let item = results[indexPath.row]
+        let text = item.username + ": " + item.message
+        cell.setup(type: item.type, message: text)
+        // cell.setup(type: "Offer", message: "Hello from ZC")
+//        cell.backgroundColor = UIColor.systemTeal
+//        cell.textLabel?.text = item.type
+//        cell.textLabel?.text = text
+//        cell.backgroundColor = .orange
+//        cell.textLabel?.textColor = .white
+//        cell.selectionStyle = .none
         return cell
     }
     
-    func getMessages(){
-        ref.child("Users").child(currentUID).child("Messages").observe(DataEventType.value) { snapshot in
-            self.results = []
+    func getMessages() {
+        ref.child("Users").child(currentUID).child("Messages").observeSingleEvent(of: .value) { snapshot in
             guard let snapChildren = snapshot.value as? [String: Any] else { return }
-                for snap in snapChildren {
-                    let dictionary = snap.value as? [String: Any]
-                    let username = dictionary!["Username"]
-                    let message = dictionary!["Message"]
-                    let completeMessage = Message(message: (message as! String), username: (username as! String))
-                    self.results?.append(completeMessage)
-                    print(completeMessage.message!)
-          }
-            self.inboxTableView.reloadData()
-            
+            for snap in snapChildren {
+                let dictionary = snap.value as? [String: Any]
+                let username = dictionary!["username"] as! String
+                let message = dictionary!["message"] as! String
+                let type = dictionary?["type"] as! String
+                let completeMessage = Message(message: message, username: username, type: type)
+                self.results.append(completeMessage)
+                print(completeMessage.message)
+            }
+            DispatchQueue.main.async {
+                self.inboxTableView.reloadData()
+            }
         }
     }
     

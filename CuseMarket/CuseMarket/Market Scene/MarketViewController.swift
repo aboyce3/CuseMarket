@@ -47,10 +47,11 @@ class MarketViewController: UIViewController {
                     product.coverPhoto = (results?.first)!
                 }
                 self.products.append(product)
+                DispatchQueue.main.async {
+                    self.marketCollectionView.reloadData()
+                }
             }
-            DispatchQueue.main.async {
-                self.marketCollectionView.reloadData()
-            }
+
         }
     }
     

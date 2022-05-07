@@ -12,9 +12,9 @@ import FirebaseDatabase
 class MessageViewController: UIViewController {
     
     var productid: String?
-    var productUserID: String?
-    let sendUserID = Auth.auth().currentUser?.uid
-    var sendUsername: String?
+    var sendToUserID: String?
+    let sendFromUserID = Auth.auth().currentUser?.uid
+    var sendFromUsername: String?
     let db = Database.database().reference()
 
     @IBOutlet weak var usernameLabel: UILabel!
@@ -31,28 +31,32 @@ class MessageViewController: UIViewController {
         db.child("Products").child(productid!).observeSingleEvent(of: .value) { snapshot in
             guard let snap = snapshot.value as? [String: Any] else { return }
             self.productTitleLabel.text = snap["title"] as? String
-            self.productUserID = snap["userID"] as? String
+            self.sendToUserID = snap["userID"] as? String
+            
+            self.db.child("Users").child(self.sendToUserID!).observeSingleEvent(of: .value) { snapshot in
+                guard let snap = snapshot.value as? [String: Any] else { return }
+                self.usernameLabel.text = snap["username"] as? String
+            }
         }
         
-        db.child("Users").child(productUserID!).observeSingleEvent(of: .value) { snapshot in
+        db.child("Users").child(sendFromUserID!).observeSingleEvent(of: .value) { snapshot in
             guard let snap = snapshot.value as? [String: Any] else { return }
-            self.usernameLabel.text = snap["username"] as? String
+            self.sendFromUsername = snap["username"] as? String
         }
         
-        db.child("Users").child(sendUserID!).observeSingleEvent(of: .value) { snapshot in
-            guard let snap = snapshot.value as? [String: Any] else { return }
-            self.sendUsername = snap["username"] as? String
+        StorageManager.shared.getProductFirstImage(productID: productid!) { result in
+            self.imageView.image = result
         }
-        
     }
     
 
     @IBAction func didTapSend(_ sender: Any) {
-        db.child("Users").child(productUserID!).child("Messages").setValue([
+        db.child("Users").child(sendToUserID!).child("Messages").child(String(inboxMessageCount)).setValue([
             "type": "Text",
-            "textInfo": String(textTextField.text!),
-            "offerUsername": sendUsername
+            "message": String(textTextField.text!),
+            "username": sendFromUsername
         ])
+        inboxMessageCount+=1
         let alert = UIAlertController(title: "Congrats", message: "Text sent!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
