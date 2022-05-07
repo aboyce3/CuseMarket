@@ -31,7 +31,7 @@ class ListingViewController: UIViewController {
         listingCollectionView.dataSource = self
         listingCollectionView.delegate = self
         
-        photos.append(UIImage(systemName: "camera")!)
+        photos.append(UIImage(systemName: "camera")!) //??
         // ImageView set up
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         listingCollectionView.isUserInteractionEnabled = true
@@ -112,10 +112,10 @@ class ListingViewController: UIViewController {
                 }
             }
         }
-        // go back to Market
-        let navViewController = self.storyboard?.instantiateViewController(withIdentifier: "marketNav") as? UINavigationController
-        self.view.window?.rootViewController = navViewController
-        self.view.window?.makeKeyAndVisible()
+        let alert = UIAlertController(title: "Congrats", message: "Product listed", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

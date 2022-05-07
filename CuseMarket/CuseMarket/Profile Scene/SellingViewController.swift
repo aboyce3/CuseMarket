@@ -20,8 +20,10 @@ class SellingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var db = Database.database().reference()
     var currentUID = Auth.auth().currentUser!.uid
-    var productSimple = ProductSimple(title: "", price: "", coverPhoto: UIImage(systemName: "camera")!)
     var results: [ProductSimple] = []
+    let p1 = ProductSimple(title: "Winter Jacket", price: "20", coverPhoto: UIImage(systemName: "camera")!)
+    let p2 = ProductSimple(title: "Dining Table", price: "100", coverPhoto: UIImage(systemName: "person")!)
+    let p3 = ProductSimple(title: "Iphone XR", price: "150", coverPhoto: UIImage(systemName: "cloud")!)
     
     @IBOutlet weak var sellingTableView: UITableView!
 
@@ -29,26 +31,30 @@ class SellingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         sellingTableView.delegate = self
         sellingTableView.dataSource = self
-        getSellingProduct()
+        // getSellingProduct()
+        results.append(p1)
+        results.append(p2)
+        results.append(p3)
     }
     
     func getSellingProduct() {
+        var productSimple = ProductSimple(title: "", price: "", coverPhoto: UIImage(systemName: "camera")!)
         db.child("Users").child(currentUID).child("Sellings").observeSingleEvent(of: .value) { snapshot in
             guard let productNos = snapshot.value as? [String: Any] else { return }
             for No in productNos {
                 let productid = No.value as! String
                 print("pid: " + productid)
                 StorageManager.shared.getProductFirstImage(productID: productid) { image in
-                    self.productSimple.coverPhoto = image!
+                    productSimple.coverPhoto = image!
                 }
                 self.db.child("Products").child(productid).observeSingleEvent(of: .value) { [self] snapshot in
                     guard let dic = snapshot.value as? [String: Any] else { return }
                     let productTitle = dic["title"] as! String
-                    self.productSimple.title = productTitle
+                    productSimple.title = productTitle
                     let productPrice = dic["price"] as! String
                     productSimple.price = productPrice
                 }
-                self.results.append(self.productSimple)
+                self.results.append(productSimple)
                 //DispatchQueue.main.async {
                 self.sellingTableView.reloadData()
                 //}
@@ -58,15 +64,14 @@ class SellingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("results: " + String(results.count))
-        //return results.count
-        return 1
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SellingCell", for: indexPath) as! SellingTableViewCell
+        let item = results[indexPath.row]
+        cell.setup(title: item.title, price: item.price, coverPhoto: item.coverPhoto)
         cell.backgroundColor = .orange
         return cell
     }
-    
-
 }

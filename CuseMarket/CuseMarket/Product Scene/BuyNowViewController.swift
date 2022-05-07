@@ -51,9 +51,9 @@ class BuyNowViewController: UIViewController {
             
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 self.db.child("Products").child(self.productid!).removeValue()
-                self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+                // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
                 self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
-                self.performSegue(withIdentifier: "returnSegue", sender: self)
+                //self.performSegue(withIdentifier: "returnSegue", sender: self)
             })
             
             dialogMessage.addAction(ok)
@@ -66,9 +66,9 @@ class BuyNowViewController: UIViewController {
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.db.child("Products").child(self.productid!).removeValue()
-            self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+            // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
             self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
-            self.performSegue(withIdentifier: "returnSegue", sender: self)
+            //self.performSegue(withIdentifier: "returnSegue", sender: self)
         })
         
         dialogMessage.addAction(ok)
@@ -80,9 +80,9 @@ class BuyNowViewController: UIViewController {
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.db.child("Products").child(self.productid!).removeValue()
-            self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+            // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
             self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
-            self.performSegue(withIdentifier: "returnSegue", sender: self)
+            //self.performSegue(withIdentifier: "returnSegue", sender: self)
         })
         
         dialogMessage.addAction(ok)
