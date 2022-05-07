@@ -113,9 +113,12 @@ class ListingViewController: UIViewController {
             }
         }
         let alert = UIAlertController(title: "Congrats", message: "Product listed", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let ok = UIAlertAction(title: "OK", style: .default) { action in
+            self.performSegue(withIdentifier: "backHomeSegue", sender: self)
+        }
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
+        
     }
 }
 
