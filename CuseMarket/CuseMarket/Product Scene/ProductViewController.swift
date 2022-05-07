@@ -11,6 +11,7 @@ import FirebaseDatabase
 class ProductViewController: UIViewController {
     
     var productid: String?
+    var accountid: String?
     var photos: [UIImage] = []
     var product: Product?
     let db = Database.database().reference()
@@ -54,6 +55,7 @@ class ProductViewController: UIViewController {
             self.productPrice.text = snap["price"] as? String
             self.productCondition.text = snap["condition"] as? String
             self.productDescription.text = snap["description"] as? String
+            self.accountid = snap["userID"] as? String
         }
     }
     
@@ -69,6 +71,9 @@ class ProductViewController: UIViewController {
         case "buySegue":
             let buyNowViewController = segue.destination as! BuyNowViewController
             buyNowViewController.productid = productid
+            buyNowViewController.accountid = accountid
+            buyNowViewController.productPrice = productPrice.text!
+            buyNowViewController.productTitle = productTitle.text!
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
