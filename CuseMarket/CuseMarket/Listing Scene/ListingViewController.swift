@@ -16,6 +16,7 @@ import CoreLocation
 class ListingViewController: UIViewController {
     
     var photos: [UIImage] = []
+    let db = Database.database().reference()
     
     @IBOutlet weak var listingCollectionView: UICollectionView!
     @IBOutlet weak var TitleTextField: UITextField!
@@ -29,9 +30,7 @@ class ListingViewController: UIViewController {
         // CollectionView set up
         listingCollectionView.dataSource = self
         listingCollectionView.delegate = self
-        //let layout = UICollectionViewFlowLayout()
-        //layout.scrollDirection = .horizontal
-        //listingCollectionView.collectionViewLayout = layout
+        
         photos.append(UIImage(systemName: "camera")!)
         // ImageView set up
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
@@ -89,18 +88,18 @@ class ListingViewController: UIViewController {
     
     @IBAction func didTapListProduct(_ sender: Any) {
         // upload product data to Firebase and dismiss the screen
-        let db = Database.database().reference()
         let productid = db.child("Products").childByAutoId().key
         let listingProduct = Product(title: TitleTextField.text!,
                                      price: PriceTextField.text!,
-                                     categroy: String(categoryButton.titleLabel!.text!), // unimplememted secne, user didn't choose category
+                                     categroy: String(categoryButton.titleLabel!.text!), // unimplememted part, user didn't choose category
                                      condition: String(conditionButton.titleLabel!.text!),
                                      //latitude: "0",
                                      //longitude: "0",
                                      description: DescriptionTextField.text!,
-                                     //photos_paths: ["1", "2"],
                                      userID: Auth.auth().currentUser?.uid ?? "",
                                      productID: productid!)
+        db.child("Users").child("Sellings").child(String(sellingProductCount)).setValue(productid)
+        sellingProductCount += 1
         
         DatabaseManager.shared.uploadProduct(with: listingProduct) { success in
             if success {

@@ -21,6 +21,5 @@ struct Product: Decodable {
     // let isSold: Bool
 }
 
-class ProductList: Decodable {
-    let products: [Product]
-}
+var inboxMessageCount = 0
+var sellingProductCount = 0

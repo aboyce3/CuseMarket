@@ -17,9 +17,9 @@ class MakeOfferViewController: UIViewController {
     @IBOutlet weak var listPriceLabel: UILabel!
     
     var productid: String?
-    var productUserID: String?
-    let offerUserID = Auth.auth().currentUser?.uid
-    var offerUsername: String?
+    var offerToUserID: String?
+    let offerFromUserID = Auth.auth().currentUser?.uid
+    var offerFromUsername: String?
     let db = Database.database().reference()
 
     override func viewDidLoad() {
@@ -32,21 +32,22 @@ class MakeOfferViewController: UIViewController {
             guard let snap = snapshot.value as? [String: Any] else { return }
             let price = snap["price"] as! String
             self.listPriceLabel.text = "Listing price: $ " + price
-            self.productUserID = snap["userID"] as? String
+            self.offerToUserID = snap["userID"] as? String
         }
         
-        db.child("Users").child(offerUserID!).observeSingleEvent(of: .value) { snapshot in
+        db.child("Users").child(offerFromUserID!).observeSingleEvent(of: .value) { snapshot in
             guard let snap = snapshot.value as? [String: Any] else { return }
-            self.offerUsername = snap["username"] as? String
+            self.offerFromUsername = snap["username"] as? String
         }
     }
     
     @IBAction func didTapOffer(_ sender: Any) {
-        db.child("Users").child(productUserID!).child("Messages").setValue([
+        db.child("Users").child(offerToUserID!).child("Messages").child(String(inboxMessageCount)).setValue([
             "type": "Offer",
-            "offerPrice": String(offerTextField.text!),
-            "offerUsername": offerUsername!
+            "message": String(offerTextField.text!),
+            "username": offerFromUsername!
         ])
+        inboxMessageCount+=1
         let alert = UIAlertController(title: "Congrats", message: "Offer sent!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)

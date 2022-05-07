@@ -31,8 +31,6 @@ class ProductViewController: UIViewController {
         layout.scrollDirection = .horizontal
         productCollectionView.collectionViewLayout = layout
         photos.append(UIImage(systemName: "camera")!)
-//        let id = (productid ?? "no data") as String
-//        print(id)
         getProductDetails()
     }
     
@@ -51,9 +49,12 @@ class ProductViewController: UIViewController {
         db.child("Products").child(productid!).observeSingleEvent(of: .value) { snapshot in
             guard let snap = snapshot.value as? [String: Any] else { return }
             self.productTitle.text = snap["title"] as? String
-            self.productPrice.text = snap["price"] as? String
-            self.productCondition.text = snap["condition"] as? String
-            self.productDescription.text = snap["description"] as? String
+            let price = snap["price"] as? String
+            self.productPrice.text = "Price: $" + price!
+            let condition = snap["condition"] as? String
+            self.productCondition.text = "Condition: " + condition!
+            let description = snap["description"] as? String
+            self.productDescription.text = "Description: " + description!
         }
     }
     
