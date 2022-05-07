@@ -36,8 +36,7 @@ class BuyNowViewController: UIViewController {
     }
 
     @IBAction func buyNowOnClick(_ sender: Any) {
-        if(fullName.text! == "" || address1.text == "" || city.text! == "" || zipCode.text! == "" || state.text! == "" || phoneNumber.text! == "" || email.text! == "" || cardNumber.text! == "" || monthYear.text! == "" || securityCode.text! == "" || phoneNumber.text!.count != 10 || Int(phoneNumber.text!) != nil || !email.text!.contains("@syr.edu") || state.text!.count != 2 || Int(cardNumber.text!) == nil || Int(securityCode.text!) != nil || securityCode.text!.count != 3){
-
+        if(fullName.text! == "" || address1.text == "" || city.text! == "" || zipCode.text! == "" || state.text! == "" || phoneNumber.text! == "" || email.text! == "" || cardNumber.text! == "" || monthYear.text! == "" || securityCode.text! == "" || phoneNumber.text!.count != 10 || !email.text!.contains("@syr.edu") || state.text!.count != 2){
             let dialogMessage = UIAlertController(title: "Confirm", message: "Please verify your information and try again!", preferredStyle: .alert)
 
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
