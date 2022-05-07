@@ -174,7 +174,7 @@
             <objects>
                 <viewController id="SEE-sx-v5n" customClass="CreateAccountViewController" customModule="CuseMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H6C-Yl-IyI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq0-PM-1C6">
@@ -1270,6 +1270,7 @@
                     <connections>
                         <outlet property="listPriceLabel" destination="6cg-JE-ftd" id="bzz-Gg-YzZ"/>
                         <outlet property="offerTextField" destination="hQT-dp-Lxf" id="sfp-ZP-H4y"/>
+                        <segue destination="2dJ-Ia-CYX" kind="presentation" identifier="returnHomeSegue" modalPresentationStyle="fullScreen" id="qfb-lZ-Da5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2R-8d-h7Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1589,7 +1590,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="W9Y-S5-7qD"/>
+        <segue reference="qfb-lZ-Da5"/>
         <segue reference="JpS-AP-orX"/>
         <segue reference="2QV-Mg-DkN"/>
     </inferredMetricsTieBreakers>
