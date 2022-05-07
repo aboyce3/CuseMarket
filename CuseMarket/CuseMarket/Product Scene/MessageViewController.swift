@@ -58,7 +58,9 @@ class MessageViewController: UIViewController {
         ])
         inboxMessageCount+=1
         let alert = UIAlertController(title: "Congrats", message: "Text sent!", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
+        })
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
