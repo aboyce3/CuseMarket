@@ -48,7 +48,6 @@ final class StorageManager {
     
     func getProductFirstImage(productID: String, completion: @escaping (UIImage?) -> Void) {
         let ref = storage.child("Products").child(productID).child("0")
-        //var image: UIImage
         ref.downloadURL { url, error in
             if let error1 = error {
                 print(error1)
