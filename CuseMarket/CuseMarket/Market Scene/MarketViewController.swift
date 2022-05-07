@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 import SwiftUI
 
 class MarketViewController: UIViewController {
@@ -43,10 +44,13 @@ class MarketViewController: UIViewController {
                 product.title = dictionary!["title"] as! String
                 product.price = dictionary!["price"] as! String
                 product.productID = dictionary!["productID"] as! String
+                let userIDTemp = dictionary!["userID"] as! String
                 StorageManager.shared.getProductImages(productID: product.productID) { results in
                     product.coverPhoto = (results?.first)!
                 }
-                self.products.append(product)
+                if(userIDTemp != Auth.auth().currentUser!.uid){
+                    self.products.append(product)
+                }
                 DispatchQueue.main.async {
                     self.marketCollectionView.reloadData()
                 }
