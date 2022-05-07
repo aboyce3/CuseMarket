@@ -479,23 +479,23 @@
                                     <segue destination="qIu-rO-lJm" kind="show" id="oip-lf-H6E"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbC-bc-VZh">
-                                <rect key="frame" x="157" y="618" width="113" height="35"/>
-                                <color key="tintColor" systemColor="systemOrangeColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Purchased">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="YD8-Gc-8K3" kind="show" id="cp7-QQ-YKd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jck-9R-Bgy">
                                 <rect key="frame" x="50" y="722.5" width="314" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
                                 <connections>
                                     <action selector="logOutTapped:" destination="1It-VV-s2b" eventType="touchUpInside" id="j2S-3x-ZU2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbC-bc-VZh">
+                                <rect key="frame" x="151" y="618" width="113" height="35"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="History">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="YD8-Gc-8K3" kind="show" id="cp7-QQ-YKd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -678,7 +678,7 @@
             </objects>
             <point key="canvasLocation" x="4282.608695652174" y="1522.7678571428571"/>
         </scene>
-        <!--Purchased-->
+        <!--History-->
         <scene sceneID="Pkr-vz-fgM">
             <objects>
                 <viewController id="YD8-Gc-8K3" customClass="BuyingViewController" customModule="CuseMarket" customModuleProvider="target" sceneMemberID="viewController">
@@ -740,7 +740,7 @@
                             <constraint firstItem="svO-Uh-xrD" firstAttribute="top" secondItem="8Mc-Ie-STz" secondAttribute="top" id="gUr-i5-bnX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Purchased" id="NxL-wK-NXw"/>
+                    <navigationItem key="navigationItem" title="History" id="NxL-wK-NXw"/>
                     <connections>
                         <outlet property="buyingTableView" destination="svO-Uh-xrD" id="mdU-Kv-fe4"/>
                     </connections>
@@ -936,25 +936,23 @@
                                     <constraint firstItem="qu8-9F-Ipj" firstAttribute="leading" secondItem="qPo-o7-t3D" secondAttribute="leading" constant="20" id="znb-e9-7NO"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38p-07-yCu">
+                                <rect key="frame" x="153" y="626" width="108.5" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Buy Now">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="dJq-KJ-Ts4" kind="show" identifier="buySegue" id="JmA-bu-atF"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r9x-0c-zJd">
-                                <rect key="frame" x="153" y="668" width="108.5" height="121"/>
+                                <rect key="frame" x="153" y="668" width="108.5" height="79"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38p-07-yCu">
-                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="ppN-jc-8Pb"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Buy Now">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                            <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="dJq-KJ-Ts4" kind="show" identifier="buySegue" id="JmA-bu-atF"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-iM-Fi6">
-                                        <rect key="frame" x="0.0" y="43" width="108.5" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="yzb-Ya-uXj"/>
                                         </constraints>
@@ -968,7 +966,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcd-26-wtE">
-                                        <rect key="frame" x="0.0" y="86" width="108.5" height="35"/>
+                                        <rect key="frame" x="0.0" y="43" width="108.5" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="P98-b0-JJR"/>
                                         </constraints>
@@ -994,6 +992,7 @@
                             <constraint firstItem="r9x-0c-zJd" firstAttribute="centerX" secondItem="hqF-i0-tgQ" secondAttribute="centerX" id="aZB-rc-I2k"/>
                             <constraint firstItem="xa9-jk-aA7" firstAttribute="top" secondItem="7FU-jT-hsg" secondAttribute="top" id="hLf-qB-dQL"/>
                             <constraint firstItem="xa9-jk-aA7" firstAttribute="leading" secondItem="hqF-i0-tgQ" secondAttribute="leadingMargin" id="hpT-X5-HnV"/>
+                            <constraint firstItem="7FU-jT-hsg" firstAttribute="bottom" secondItem="r9x-0c-zJd" secondAttribute="bottom" constant="66" id="jeF-rg-BrC"/>
                             <constraint firstItem="7FU-jT-hsg" firstAttribute="trailing" secondItem="qPo-o7-t3D" secondAttribute="trailing" constant="20" id="vfB-aw-xG4"/>
                         </constraints>
                     </view>
@@ -1016,14 +1015,14 @@
             <objects>
                 <viewController id="dJq-KJ-Ts4" customClass="BuyNowViewController" customModule="CuseMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vNj-N6-pFa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvZ-6c-9U1">
-                                <rect key="frame" x="20" y="36" width="374" height="770"/>
+                                <rect key="frame" x="20" y="85" width="374" height="726"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-lg-XHS">
-                                        <rect key="frame" x="10" y="8" width="344" height="240.5"/>
+                                        <rect key="frame" x="10" y="11" width="344" height="240.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuZ-bQ-NSh">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
@@ -1124,7 +1123,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="20W-xR-L5R">
-                                        <rect key="frame" x="10" y="270" width="344" height="105.5"/>
+                                        <rect key="frame" x="10" y="273" width="344" height="102.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Contact Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTt-4w-mos">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
@@ -1138,7 +1137,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oFc-0g-9d0">
-                                                <rect key="frame" x="0.0" y="74.5" width="344" height="31"/>
+                                                <rect key="frame" x="0.0" y="74.5" width="344" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1218,11 +1217,11 @@
             <objects>
                 <viewController id="3Bg-sB-aBg" customClass="MakeOfferViewController" customModule="CuseMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kqc-YT-uqu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hQT-dp-Lxf">
-                                <rect key="frame" x="183" y="60" width="48" height="60"/>
+                                <rect key="frame" x="183" y="148" width="48" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bii-ED-Xfn"/>
                                 </constraints>
@@ -1230,7 +1229,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listing price: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cg-JE-ftd">
-                                <rect key="frame" x="115" y="150" width="184" height="30"/>
+                                <rect key="frame" x="115" y="238" width="184" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="e4c-PX-RWS"/>
                                     <constraint firstAttribute="height" constant="30" id="eBg-8c-zPg"/>
@@ -1240,7 +1239,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsD-mq-AKH">
-                                <rect key="frame" x="32" y="210" width="350" height="100"/>
+                                <rect key="frame" x="32" y="298" width="350" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="Mel-8n-Syb"/>
                                     <constraint firstAttribute="height" constant="100" id="w5P-Ja-MNN"/>
@@ -1251,7 +1250,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uA-FC-anB">
-                                <rect key="frame" x="161" y="340" width="92" height="51"/>
+                                <rect key="frame" x="161" y="428" width="92" height="51"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Offer">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -1597,7 +1596,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JmA-bu-atF"/>
         <segue reference="cIT-T3-RAQ"/>
         <segue reference="JpS-AP-orX"/>
         <segue reference="1J5-9g-tjk"/>

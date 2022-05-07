@@ -27,7 +27,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         inboxTableView.delegate = self
         inboxTableView.dataSource = self
         getMessages()
-        
+        inboxTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
