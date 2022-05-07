@@ -32,7 +32,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return 1
-        return results.count ?? 0
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,13 +40,13 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let item = results[indexPath.row]
         let text = item.username + ": " + item.message
         cell.setup(type: item.type, message: text)
-        // cell.setup(type: "Offer", message: "Hello from ZC")
-//        cell.backgroundColor = UIColor.systemTeal
-//        cell.textLabel?.text = item.type
-//        cell.textLabel?.text = text
-//        cell.backgroundColor = .orange
-//        cell.textLabel?.textColor = .white
-//        cell.selectionStyle = .none
+        cell.setup(type: "Offer", message: "Hello from ZC")
+        cell.backgroundColor = UIColor.systemTeal
+        cell.textLabel?.text = item.type
+        cell.textLabel?.text = text
+        cell.backgroundColor = .orange
+        cell.textLabel?.textColor = .white
+        cell.selectionStyle = .none
         return cell
     }
     
