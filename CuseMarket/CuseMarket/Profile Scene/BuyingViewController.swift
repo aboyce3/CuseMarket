@@ -30,6 +30,4 @@ class BuyingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuyingCell", for: indexPath)
         return cell
     }
-    
-
 }

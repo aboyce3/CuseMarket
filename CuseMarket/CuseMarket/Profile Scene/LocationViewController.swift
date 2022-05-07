@@ -54,8 +54,4 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         let string = String(format: "%.1f", value)
         customRadius.text = "\(string) miles"
     }
-    
-    @IBAction func applyDidTap(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 }
