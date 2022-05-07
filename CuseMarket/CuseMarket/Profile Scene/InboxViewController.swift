@@ -19,7 +19,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let ref = Database.database().reference()
     let currentUID = Auth.auth().currentUser!.uid
     var results: [Message] = []
-    
     @IBOutlet weak var inboxTableView: UITableView!
     
     override func viewDidLoad() {
@@ -27,7 +26,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         inboxTableView.delegate = self
         inboxTableView.dataSource = self
         getMessages()
-        inboxTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,22 +48,22 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func getMessages() {
-        ref.child("Users").child(currentUID).child("Messages").observeSingleEvent(of: .value) { snapshot in
-            guard let snapChildren = snapshot.value as? [String: Any] else { return }
-            for snap in snapChildren {
-                let dictionary = snap.value as? [String: Any]
-                let username = dictionary!["username"] as! String
-                let message = dictionary!["message"] as! String
-                let type = dictionary?["type"] as! String
-                let completeMessage = Message(message: message, username: username, type: type)
-                self.results.append(completeMessage)
-                print(completeMessage.message)
-            }
-            DispatchQueue.main.async {
-                self.inboxTableView.reloadData()
-            }
+    func getMessages(){
+        ref.child("Users").child(currentUID).child("Messages").observe(DataEventType.value) { snapshot in
+            self.results = []
+            guard let snapChildren = snapshot.value as? [String: Any]
+            else { return }
+                for snap in snapChildren {
+                    let dictionary = snap.value as? [String: Any]
+                    let username = dictionary!["username"]
+                    let message = dictionary!["message"]
+                    let type = dictionary!["type"]
+                    let completeReview = Message(message: message as! String, username: username as! String, type: type as! String)
+                    self.results.insert(completeReview, at: 0)
+                    
+          }
+            self.inboxTableView.reloadData()
+            
         }
     }
-    
 }
