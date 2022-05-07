@@ -53,7 +53,11 @@ class BuyNowViewController: UIViewController {
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 self.db.child("Products").child(self.productid!).removeValue()
                 // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
-                self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                var counter = 0
+                self.ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+                    counter = Int(snapshot.childrenCount) + 1
+                })
+                self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(String(counter)).setValue(["title": self.productTitle!, "price" : self.productPrice!])
                 //self.performSegue(withIdentifier: "returnSegue", sender: self)
             })
 
@@ -68,7 +72,11 @@ class BuyNowViewController: UIViewController {
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.db.child("Products").child(self.productid!).removeValue()
             // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
-            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            var counter = 0
+            self.ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+                counter = Int(snapshot.childrenCount) + 1
+            })
+            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(String(counter)).setValue(["title": self.productTitle!, "price" : self.productPrice!])
             //self.performSegue(withIdentifier: "returnSegue", sender: self)
         })
 
@@ -82,7 +90,11 @@ class BuyNowViewController: UIViewController {
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.db.child("Products").child(self.productid!).removeValue()
             // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
-            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            var counter = 0
+            self.ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+                counter = Int(snapshot.childrenCount) + 1
+            })
+            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(String(counter)).setValue(["title": self.productTitle!, "price" : self.productPrice!])
             //self.performSegue(withIdentifier: "returnSegue", sender: self)
         })
 
