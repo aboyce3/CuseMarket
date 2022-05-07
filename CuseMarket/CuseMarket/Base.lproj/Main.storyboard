@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuA-aw-Pff" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="72"/>
+            <point key="canvasLocation" x="1606" y="72"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="Yd9-JP-K4L">
@@ -234,8 +234,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXx-bd-YX6">
-                                <rect key="frame" x="95" y="655" width="227" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXx-bd-YX6">
+                                <rect key="frame" x="95" y="654" width="227" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="1hT-sw-AZx"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="227" id="mTC-2z-LEi"/>
@@ -949,7 +949,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r9x-0c-zJd">
-                                <rect key="frame" x="153" y="668" width="108.5" height="79"/>
+                                <rect key="frame" x="153" y="668" width="108.5" height="77.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-iM-Fi6">
                                         <rect key="frame" x="0.0" y="0.0" width="108.5" height="35"/>
@@ -966,7 +966,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcd-26-wtE">
-                                        <rect key="frame" x="0.0" y="43" width="108.5" height="36"/>
+                                        <rect key="frame" x="0.0" y="43" width="108.5" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="P98-b0-JJR"/>
                                         </constraints>
@@ -1596,9 +1596,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cIT-T3-RAQ"/>
+        <segue reference="HMj-zB-wVQ"/>
         <segue reference="JpS-AP-orX"/>
-        <segue reference="1J5-9g-tjk"/>
+        <segue reference="2QV-Mg-DkN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Cuse Market-logos_transparent" width="1200" height="1200"/>
