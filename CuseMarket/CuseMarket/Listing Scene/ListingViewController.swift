@@ -98,7 +98,7 @@ class ListingViewController: UIViewController {
                                      description: DescriptionTextField.text!,
                                      userID: Auth.auth().currentUser?.uid ?? "",
                                      productID: productid!)
-        db.child("Users").child(Auth.auth().currentUser!.uid).child("Sellings").child(String(sellingProductCount)).setValue(productid)
+        //db.child("Users").child(Auth.auth().currentUser!.uid).child("Sellings").child(String(sellingProductCount)).setValue(productid)
         sellingProductCount += 1
 
         DatabaseManager.shared.uploadProduct(with: listingProduct) { success in
