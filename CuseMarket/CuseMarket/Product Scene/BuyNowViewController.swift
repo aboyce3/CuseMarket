@@ -32,8 +32,8 @@ class BuyNowViewController: UIViewController {
     }
 
     @IBAction func buyNowOnClick(_ sender: Any) {
-        if(fullName.text! == "" || address1.text == "" || city.text! == "" || zipCode.text! == "" || state.text! == "" || phoneNumber.text! == "" || email.text! == "" ||
-           cardNumber.text! == "" || monthYear.text! == "" || securityCode.text! == ""){
+        if(fullName.text! == "" || address1.text == "" || city.text! == "" || zipCode.text! == "" || state.text! == "" || phoneNumber.text! == "" || email.text! == "" || cardNumber.text! == "" || monthYear.text! == "" || securityCode.text! == "" || phoneNumber.text!.count != 10 || Int(phoneNumber.text!) != nil || !email.text!.contains("@syr.edu") || state.text!.count != 2 || Int(cardNumber.text!) == nil || Int(securityCode.text!) != nil || securityCode.text!.count != 3){
+            
             let dialogMessage = UIAlertController(title: "Confirm", message: "Please verify your information and try again!", preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
@@ -42,6 +42,7 @@ class BuyNowViewController: UIViewController {
             
             dialogMessage.addAction(ok)
             self.present(dialogMessage, animated: true, completion: nil)
+            
         } else {
             let dialogMessage = UIAlertController(title: "Confirm", message: "Purchase successful!", preferredStyle: .alert)
             
@@ -57,7 +58,7 @@ class BuyNowViewController: UIViewController {
         }
     }
     
-    @IBAction func paypalOnClick(_ sender: Any) throws {
+    @IBAction func paypalOnClick(_ sender: Any) {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Purchase successful!", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in

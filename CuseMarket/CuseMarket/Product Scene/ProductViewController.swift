@@ -56,6 +56,7 @@ class ProductViewController: UIViewController {
             self.productCondition.text = "Condition: " + condition!
             let description = snap["description"] as? String
             self.productDescription.text = "Description: " + description!
+            self.accountid = snap["userID"] as? String
         }
     }
 
