@@ -1,17 +1,17 @@
 //
-//  SellingTableViewCell.swift
+//  BuyingTableViewCell.swift
 //  CuseMarket
 //
-//  Created by Zhiyi Chen on 5/6/22.
+//  Created by Zhiyi Chen on 5/7/22.
 //
 
 import UIKit
 
-class SellingTableViewCell: UITableViewCell {
+class BuyingTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var sellingImageView: UIImageView!
-    @IBOutlet weak var sellingProductName: UILabel!
-    @IBOutlet weak var sellingProductPrice: UILabel!
+    @IBOutlet weak var buyingImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +23,11 @@ class SellingTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
     func setup(title: String, price: String, coverPhoto: UIImage) {
-        sellingImageView.image = coverPhoto
-        sellingProductName.text = title
-        sellingProductPrice.text = "$" + price
+        buyingImageView.image = coverPhoto
+        productNameLabel.text = title
+        productPriceLabel.text = "$" + price
     }
+
 }

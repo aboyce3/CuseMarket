@@ -14,34 +14,34 @@ import MapKit
 import CoreLocation
 
 class ListingViewController: UIViewController {
-    
+
     var photos: [UIImage] = []
     let db = Database.database().reference()
-    
+
     @IBOutlet weak var listingCollectionView: UICollectionView!
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var PriceTextField: UITextField!
     @IBOutlet weak var DescriptionTextField: UITextField!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var conditionButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // CollectionView set up
         listingCollectionView.dataSource = self
         listingCollectionView.delegate = self
-        
-        photos.append(UIImage(systemName: "camera")!)
+
+        photos.append(UIImage(systemName: "camera")!) //??
         // ImageView set up
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         listingCollectionView.isUserInteractionEnabled = true
         listingCollectionView.addGestureRecognizer(gesture)
     }
-    
+
     @objc func imageTapped() {
         presentPhotoActionSheet()
     }
-    
+
     @IBAction func didTapCategory(_ sender: Any) {
         let categoryAction = UIAlertController(title: "Choose Category", message: nil, preferredStyle: .actionSheet)
         categoryAction.addAction(UIAlertAction(title: "Clothing", style: .default, handler: { action in
@@ -63,7 +63,7 @@ class ListingViewController: UIViewController {
         categoryAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(categoryAction, animated: true)
     }
-    
+
     @IBAction func didTapCondition(_ sender: Any) {
         let conditionAction = UIAlertController(title: "Choose Category", message: nil, preferredStyle: .actionSheet)
         conditionAction.addAction(UIAlertAction(title: "New", style: .default, handler: { action in
@@ -85,7 +85,7 @@ class ListingViewController: UIViewController {
         conditionAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(conditionAction, animated: true)
     }
-    
+
     @IBAction func didTapListProduct(_ sender: Any) {
         // upload product data to Firebase and dismiss the screen
         let productid = db.child("Products").childByAutoId().key
@@ -100,7 +100,7 @@ class ListingViewController: UIViewController {
                                      productID: productid!)
         db.child("Users").child(Auth.auth().currentUser!.uid).child("Sellings").child(String(sellingProductCount)).setValue(productid)
         sellingProductCount += 1
-        
+
         DatabaseManager.shared.uploadProduct(with: listingProduct) { success in
             if success {
                 // upload image
@@ -112,8 +112,10 @@ class ListingViewController: UIViewController {
                 }
             }
         }
-        // go back to Market
-        self.performSegue(withIdentifier: "backHomeSegue", sender: self)
+        let alert = UIAlertController(title: "Congrats", message: "Product listed", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -121,7 +123,7 @@ extension ListingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCollectionViewCell", for: indexPath) as! ListingCollectionViewCell
         // cell.setup(with: UIImage(named: "test")!)
@@ -148,7 +150,7 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
         }))
         present(actionSheet, animated: true)
     }
-    
+
     func presentCamera() {
         let vc = UIImagePickerController()
         vc.sourceType = .camera
@@ -156,7 +158,7 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
         vc.allowsEditing = true // user can crop and edit photos they have picked
         present(vc, animated: true)
     }
-    
+
     func presentPhotoPicker() {
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 5
@@ -165,7 +167,7 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
         vc.delegate = self
         present(vc, animated: true)
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
@@ -176,11 +178,11 @@ extension ListingViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.listingCollectionView.reloadData()
         }
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
-    
+
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         results.forEach { result in

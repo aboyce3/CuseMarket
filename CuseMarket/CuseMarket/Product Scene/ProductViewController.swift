@@ -31,7 +31,7 @@ class ProductViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         productCollectionView.collectionViewLayout = layout
-        photos.append(UIImage(systemName: "camera")!)
+        // photos.append(UIImage(systemName: "camera")!)
         getProductDetails()
     }
 

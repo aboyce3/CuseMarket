@@ -23,9 +23,16 @@ class InboxTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(type: String, message: String) {
+    func setup(type: String, message: String, username: String) {
         typeLabel.text = type
-        messageLabel.text = message
+        if type == "Offer" {
+            let message = username + " offered " + "$\(message)"
+            messageLabel.text = message
+        }
+        else {
+            let message = username + ": " + message
+            messageLabel.text = message
+        }
     }
 
 }
