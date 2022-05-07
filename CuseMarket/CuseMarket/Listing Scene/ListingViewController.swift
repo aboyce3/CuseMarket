@@ -113,9 +113,7 @@ class ListingViewController: UIViewController {
             }
         }
         // go back to Market
-        let navViewController = self.storyboard?.instantiateViewController(withIdentifier: "marketNav") as? UINavigationController
-        self.view.window?.rootViewController = navViewController
-        self.view.window?.makeKeyAndVisible()
+        self.performSegue(withIdentifier: "backHomeSegue", sender: self)
     }
 }
 
