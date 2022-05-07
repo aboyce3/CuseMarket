@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+
 class BuyNowViewController: UIViewController {
     
     @IBOutlet weak var fullName: UITextField!
@@ -21,16 +22,18 @@ class BuyNowViewController: UIViewController {
     @IBOutlet weak var cardNumber: UITextField!
     @IBOutlet weak var monthYear: UITextField!
     @IBOutlet weak var securityCode: UITextField!
+    
     var productid: String?
     var productTitle: String?
     var productPrice: String?
     var accountid: String?
+    let db = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func buyNowOnClick(_ sender: Any) {
         if(fullName.text! == "" || address1.text == "" || city.text! == "" || zipCode.text! == "" || state.text! == "" || phoneNumber.text! == "" || email.text! == "" || cardNumber.text! == "" || monthYear.text! == "" || securityCode.text! == "" || phoneNumber.text!.count != 10 || Int(phoneNumber.text!) != nil || !email.text!.contains("@syr.edu") || state.text!.count != 2 || Int(cardNumber.text!) == nil || Int(securityCode.text!) != nil || securityCode.text!.count != 3){
             
@@ -38,7 +41,7 @@ class BuyNowViewController: UIViewController {
             
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 return
-             })
+            })
             
             dialogMessage.addAction(ok)
             self.present(dialogMessage, animated: true, completion: nil)
@@ -47,11 +50,11 @@ class BuyNowViewController: UIViewController {
             let dialogMessage = UIAlertController(title: "Confirm", message: "Purchase successful!", preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                    Database.database().reference().child("Products").child(self.productid!).removeValue()
-                    Database.database().reference().child("Users").child(self.accountid!).child("Selling").child(self.productid!).removeValue()
-                    Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                self.db.child("Products").child(self.productid!).removeValue()
+                self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+                self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
                 self.performSegue(withIdentifier: "returnSegue", sender: self)
-             })
+            })
             
             dialogMessage.addAction(ok)
             self.present(dialogMessage, animated: true, completion: nil)
@@ -62,11 +65,11 @@ class BuyNowViewController: UIViewController {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Purchase successful!", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            Database.database().reference().child("Products").child(self.productid!).removeValue()
-            Database.database().reference().child("Users").child(self.accountid!).child("Selling").child(self.productid!).removeValue()
-            Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            self.db.child("Products").child(self.productid!).removeValue()
+            self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
             self.performSegue(withIdentifier: "returnSegue", sender: self)
-         })
+        })
         
         dialogMessage.addAction(ok)
         self.present(dialogMessage, animated: true, completion: nil)
@@ -76,11 +79,11 @@ class BuyNowViewController: UIViewController {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Purchase successful!", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            Database.database().reference().child("Products").child(self.productid!).removeValue()
-            Database.database().reference().child("Users").child(self.accountid!).child("Selling").child(self.productid!).removeValue()
-            Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            self.db.child("Products").child(self.productid!).removeValue()
+            self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").setValue(["title": self.productTitle!, "price" : self.productPrice!])
             self.performSegue(withIdentifier: "returnSegue", sender: self)
-         })
+        })
         
         dialogMessage.addAction(ok)
         self.present(dialogMessage, animated: true, completion: nil)

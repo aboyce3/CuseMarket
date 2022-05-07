@@ -8,6 +8,7 @@
 import UIKit
 
 class MarketCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var marketImageView: UIImageView!
     @IBOutlet weak var marketProductTitle: UILabel!
     @IBOutlet weak var marketProductPrice: UILabel!

@@ -20,9 +20,11 @@ class MarketViewController: UIViewController {
     }
 
     var products: [MarketProduct] = []
+    var filteredProducts: [MarketProduct] = [] // for Search Bar, and pass these to collection view
     let db = Database.database().reference()
 
     @IBOutlet weak var marketCollectionView: UICollectionView!
+    @IBOutlet weak var marketSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class MarketViewController: UIViewController {
         marketCollectionView.delegate = self
         let layout = UICollectionViewFlowLayout()
         marketCollectionView.collectionViewLayout = layout
+        
+        marketSearchBar.delegate = self
         getProducts()
     }
     
@@ -40,27 +44,25 @@ class MarketViewController: UIViewController {
             guard let snapCollection = snapshot.value as? [String: Any] else { return }
             for snap in snapCollection {
                 let dictionary = snap.value as? [String: Any]
-                var product = MarketProduct(title: "", price: "", productID: "", coverPhoto: UIImage(systemName: "camera")!)
-                product.title = dictionary!["title"] as! String
-                product.price = dictionary!["price"] as! String
-                product.productID = dictionary!["productID"] as! String
-                let userIDTemp = dictionary!["userID"] as! String
-                StorageManager.shared.getProductImages(productID: product.productID) { results in
-                    product.coverPhoto = (results?.first)!
-                }
-                if(userIDTemp != Auth.auth().currentUser!.uid){
-                    self.products.append(product)
-                }
-                DispatchQueue.main.async {
+                let title1 = dictionary!["title"] as! String
+                let price1 = dictionary!["price"] as! String
+                let productID1 = dictionary!["productID"] as! String
+                var image1 = UIImage(systemName: "person")
+                StorageManager.shared.getProductFirstImage(productID: productID1) { image in
+                    image1 = image!
+                    let product = MarketProduct(title: title1, price: price1, productID: productID1, coverPhoto: image1!)
+                    let userIDTemp = dictionary!["userID"] as! String
+                    if (userIDTemp != Auth.auth().currentUser!.uid) {
+                        self.products.append(product)
+                        self.filteredProducts.append(product)
+                    }
                     self.marketCollectionView.reloadData()
                 }
             }
-
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // If the triggered segue is the "showItem" segue
         switch segue.identifier {
         case "showProduct"?:
             if let cell = sender as? UICollectionViewCell {
@@ -79,12 +81,12 @@ class MarketViewController: UIViewController {
 
 extension MarketViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return filteredProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketCollectionViewCell", for: indexPath) as! MarketCollectionViewCell
-        let product = products[indexPath.row]
+        let product = filteredProducts[indexPath.row]
         cell.setup(with: product.coverPhoto, title: product.title, price: product.price)
         return cell
     }
@@ -93,5 +95,23 @@ extension MarketViewController: UICollectionViewDataSource {
 extension MarketViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 300)
+    }
+}
+
+// MARK: Search Bar Config
+extension MarketViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredProducts = []
+        if searchText == "" {
+            filteredProducts = products
+        }
+        else {
+            for product in products {
+                if product.title.lowercased().contains(searchText.lowercased()) {
+                    filteredProducts.append(product)
+                }
+            }
+        }
+        self.marketCollectionView.reloadData()
     }
 }
