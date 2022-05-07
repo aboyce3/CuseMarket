@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LuH-g3-37Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LuH-g3-37Y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cuse Market-logos_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="0t1-p4-i1o">
-                                <rect key="frame" x="-120.5" y="0.0" width="655" height="346"/>
+                                <rect key="frame" x="-120.5" y="-44" width="655" height="356"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="655" id="HIK-x7-XdV"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkP-4E-AvY">
-                                <rect key="frame" x="99" y="354" width="216" height="34"/>
+                                <rect key="frame" x="99" y="320" width="216" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Bn3-BG-BmR"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDi-dA-5ur">
-                                <rect key="frame" x="123" y="393" width="147" height="31"/>
+                                <rect key="frame" x="123" y="359" width="147" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="dY3-jL-L9x"/>
                                 </constraints>
@@ -295,7 +295,7 @@
                         <outlet property="password" destination="JLj-yT-fTA" id="HEE-O2-szT"/>
                         <outlet property="passwordConfirm" destination="zaj-Pz-JYK" id="npL-h5-GXG"/>
                         <outlet property="username" destination="SSq-fM-Qcy" id="gEv-IG-opq"/>
-                        <segue destination="Bl7-xs-XGM" kind="show" identifier="returnSegue" id="2QV-Mg-DkN"/>
+                        <segue destination="mzq-ay-HGl" kind="presentation" identifier="returnSegue" modalPresentationStyle="fullScreen" id="wgw-uB-4en"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7Y-YQ-bVn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1594,9 +1594,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="W9Y-S5-7qD"/>
-        <segue reference="JpS-AP-orX"/>
-        <segue reference="2QV-Mg-DkN"/>
+        <segue reference="HMj-zB-wVQ"/>
+        <segue reference="wgw-uB-4en"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Cuse Market-logos_transparent" width="1200" height="1200"/>
