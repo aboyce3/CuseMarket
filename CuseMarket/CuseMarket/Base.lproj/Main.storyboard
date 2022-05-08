@@ -1201,6 +1201,7 @@
                         <outlet property="securityCode" destination="D4p-Jd-tSI" id="3ve-ng-vOX"/>
                         <outlet property="state" destination="HPL-s9-6tm" id="YlR-hc-7jj"/>
                         <outlet property="zipCode" destination="bNK-bb-bd6" id="hEU-cq-dyu"/>
+                        <segue destination="2dJ-Ia-CYX" kind="presentation" identifier="returnHomeSegue" modalPresentationStyle="fullScreen" id="4dc-wD-Fkn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jg0-Ja-Lzx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1594,7 +1595,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HMj-zB-wVQ"/>
+        <segue reference="4dc-wD-Fkn"/>
         <segue reference="wgw-uB-4en"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -67,6 +67,7 @@ class BuyNowViewController: UIViewController {
                     let m = self.productTitle! + " has sold!"
                     self.db.child("Users").child(self.accountid!).child("Messages").child(String(counter)).setValue(["message": m, "type" : "Purchase", "username" : username])
                     self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                    self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
                 });
             })
 
@@ -97,6 +98,7 @@ class BuyNowViewController: UIViewController {
                 let m = self.productTitle! + " has sold!"
                 self.db.child("Users").child(self.accountid!).child("Messages").child(String(counter)).setValue(["message": m, "type" : "Purchase", "username" : username])
                 self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
             });
         })
 
@@ -126,6 +128,7 @@ class BuyNowViewController: UIViewController {
                 let m = self.productTitle! + " has sold!"
                 self.db.child("Users").child(self.accountid!).child("Messages").child(String(counter)).setValue(["message": m, "type" : "Purchase", "username" : username])
                 self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
             });
         })
 
