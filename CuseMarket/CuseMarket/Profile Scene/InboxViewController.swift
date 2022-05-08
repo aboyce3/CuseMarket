@@ -19,7 +19,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     //let m1 = Message(message: "20", username: "Joe", type: "Offer")
     //let m2 = Message(message: "Bought it!", username: "Sam", type: "Purchased")
-   // let m3 = Message(message: "Is this availiable", username: "Alice", type: "Text")
+    //let m3 = Message(message: "Is this availiable", username: "Alice", type: "Text")
     let db = Database.database().reference()
     let currentUID = Auth.auth().currentUser!.uid
     var results: [Message] = []
@@ -34,20 +34,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //results.append(m3)
         getMessages()
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxCell", for: indexPath) as! InboxTableViewCell
-        let item = results[indexPath.row]
-        cell.setup(type: item.type, message: item.message, username: item.username)
-        cell.backgroundColor = .orange
-        cell.textLabel?.textColor = .white
-        return cell
-    }
-
+    
     func getMessages () {
         db.child("Users").child(currentUID).child("Messages").observe(.value) { snapshot in
             for child in snapshot.children {
@@ -63,4 +50,15 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxCell", for: indexPath) as! InboxTableViewCell
+        let item = results[indexPath.row]
+        cell.setup(type: item.type, message: item.message, username: item.username)
+        cell.backgroundColor = .orange
+        return cell
+    }
 }

@@ -42,12 +42,12 @@ class MakeOfferViewController: UIViewController {
     }
     
     @IBAction func didTapOffer(_ sender: Any) {
-        db.child("Users").child(offerToUserID!).child("Messages").child(String(inboxMessageCount)).setValue([
+        let uuid = UUID().uuidString
+        db.child("Users").child(offerToUserID!).child("Messages").child(uuid).setValue([
             "type": "Offer",
             "message": String(offerTextField.text!),
             "username": offerFromUsername!
         ])
-        inboxMessageCount+=1
         let alert = UIAlertController(title: "Congrats", message: "Offer sent!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.performSegue(withIdentifier: "returnHomeSegue", sender: self)

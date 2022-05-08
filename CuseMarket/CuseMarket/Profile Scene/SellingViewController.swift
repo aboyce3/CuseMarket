@@ -37,17 +37,17 @@ class SellingViewController: UIViewController, UITableViewDelegate, UITableViewD
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
                 guard let dictionary = snap.value as? [String: Any] else {return}
+                print(dictionary)
                 let productid = snap.key
                 StorageManager.shared.getProductFirstImage(productID: productid) { image in
                     productSimple.coverPhoto = image!
+                    let productTitle = dictionary["title"] as! String
+                    productSimple.title = productTitle
+                    let productPrice = dictionary["price"] as! String
+                    productSimple.price = productPrice
+                    self.results.append(productSimple)
+                    self.sellingTableView.reloadData()
                 }
-                print(dictionary)
-                let productTitle = dictionary["title"] as! String
-                productSimple.title = productTitle
-                let productPrice = dictionary["price"] as! String
-                productSimple.price = productPrice
-                self.results.append(productSimple)
-                self.sellingTableView.reloadData()
             }
         }
     }

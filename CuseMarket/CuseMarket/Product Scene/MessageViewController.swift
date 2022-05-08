@@ -51,12 +51,12 @@ class MessageViewController: UIViewController {
     
 
     @IBAction func didTapSend(_ sender: Any) {
-        db.child("Users").child(sendToUserID!).child("Messages").child(String(inboxMessageCount)).setValue([
+        let uuid = UUID().uuidString
+        db.child("Users").child(sendToUserID!).child("Messages").child(uuid).setValue([
             "type": "Text",
             "message": String(textTextField.text!),
             "username": sendFromUsername
         ])
-        inboxMessageCount+=1
         let alert = UIAlertController(title: "Congrats", message: "Text sent!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
