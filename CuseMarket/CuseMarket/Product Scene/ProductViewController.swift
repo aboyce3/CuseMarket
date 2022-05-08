@@ -72,7 +72,7 @@ class ProductViewController: UIViewController {
         case "buySegue":
             let buyNowViewController = segue.destination as! BuyNowViewController
             buyNowViewController.productid = productid
-            buyNowViewController.accountid = accountid
+            buyNowViewController.sellerUserID = accountid
             buyNowViewController.productPrice = productPrice.text!
             buyNowViewController.productTitle = productTitle.text!
         default:

@@ -29,6 +29,27 @@ class BuyingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getBuyingProduct()
     }
     
+    func getBuyingProduct() {
+        var productSimple = ProductSimple(title: "", price: "", coverPhoto: UIImage(systemName: "camera")!)
+        db.child("Users").child(currentUID).child("Purchased").observe(.value){ snapshot in
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                guard let dictionary = snap.value as? [String: Any] else {return}
+                print(dictionary)
+                let productid = snap.key
+                StorageManager.shared.getProductFirstImage(productID: productid) { image in
+                    productSimple.coverPhoto = image!
+                    let productTitle = dictionary["title"] as! String
+                    productSimple.title = productTitle
+                    let productPrice = dictionary["price"] as! String
+                    productSimple.price = productPrice
+                    self.results.append(productSimple)
+                    self.buyingTableView.reloadData()
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
@@ -39,26 +60,5 @@ class BuyingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.setup(title: item.title, price: item.price, coverPhoto: item.coverPhoto)
         cell.backgroundColor = .orange
         return cell
-    }
-    
-    func getBuyingProduct() {
-        var productSimple = ProductSimple(title: "", price: "", coverPhoto: UIImage(systemName: "camera")!)
-        db.child("Users").child(currentUID).child("Purchased").observe(.value){ snapshot in
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                guard let dictionary = snap.value as? [String: Any] else {return}
-                let productid = snap.key
-                StorageManager.shared.getProductFirstImage(productID: productid) { image in
-                    productSimple.coverPhoto = image!
-                }
-                print(dictionary)
-                let productTitle = dictionary["title"] as! String
-                productSimple.title = productTitle
-                let productPrice = dictionary["price"] as! String
-                productSimple.price = productPrice
-                self.results.append(productSimple)
-                self.buyingTableView.reloadData()
-            }
-        }
     }
 }

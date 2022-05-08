@@ -47,9 +47,9 @@ class ProfileViewController: UIViewController {
     }
     
     func uploadProfilePicture() {
-        storageRef = Storage.storage().reference().child("profilePictures/" + Auth.auth().currentUser!.uid + ".png")
+        let ref = storageRef.child("profilePictures/" + Auth.auth().currentUser!.uid + ".png")
         if let uploadData = self.profileImageView.image!.pngData() {
-                storageRef.putData(uploadData)
+                ref.putData(uploadData)
         }
     }
     

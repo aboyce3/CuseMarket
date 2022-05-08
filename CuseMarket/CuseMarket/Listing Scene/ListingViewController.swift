@@ -17,6 +17,7 @@ class ListingViewController: UIViewController {
 
     var photos: [UIImage] = []
     let db = Database.database().reference()
+    
     @IBOutlet weak var listingCollectionView: UICollectionView!
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var PriceTextField: UITextField!
@@ -29,8 +30,8 @@ class ListingViewController: UIViewController {
         // CollectionView set up
         listingCollectionView.dataSource = self
         listingCollectionView.delegate = self
-
-        photos.append(UIImage(systemName: "camera")!) //??
+        // let CollectionView shows camera when first load, otherwise CollectionView will be empty
+        photos.append(UIImage(systemName: "camera")!)
         // ImageView set up
         let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         listingCollectionView.isUserInteractionEnabled = true
@@ -90,7 +91,7 @@ class ListingViewController: UIViewController {
         let productid = db.child("Products").childByAutoId().key
         let listingProduct = Product(title: TitleTextField.text!,
                                      price: PriceTextField.text!,
-                                     categroy: String(categoryButton.titleLabel!.text!), // unimplememted part, user didn't choose category
+                                     categroy: String(categoryButton.titleLabel!.text!), // unimplememted part: if user didn't choose category...
                                      condition: String(conditionButton.titleLabel!.text!),
                                      //latitude: "0",
                                      //longitude: "0",
@@ -104,7 +105,8 @@ class ListingViewController: UIViewController {
             if success {
                 // upload image
                 var count = 0
-                self.photos.forEach { photo in
+                for i in 1..<self.photos.count {
+                    let photo = self.photos[i]
                     let imageid = String(count)
                     StorageManager.shared.uploadProductImages(image: photo, productID: productid!, imageID: imageid)
                     count += 1
@@ -117,7 +119,6 @@ class ListingViewController: UIViewController {
         }
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
-        
     }
 }
 
