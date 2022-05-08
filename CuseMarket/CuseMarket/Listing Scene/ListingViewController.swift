@@ -17,7 +17,6 @@ class ListingViewController: UIViewController {
 
     var photos: [UIImage] = []
     let db = Database.database().reference()
-
     @IBOutlet weak var listingCollectionView: UICollectionView!
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var PriceTextField: UITextField!
@@ -98,8 +97,8 @@ class ListingViewController: UIViewController {
                                      description: DescriptionTextField.text!,
                                      userID: Auth.auth().currentUser?.uid ?? "",
                                      productID: productid!)
-        //db.child("Users").child(Auth.auth().currentUser!.uid).child("Sellings").child(String(sellingProductCount)).setValue(productid)
-        sellingProductCount += 1
+        
+        db.child("Users").child(Auth.auth().currentUser!.uid).child("Sellings").child(productid!).setValue(["title" : TitleTextField.text!, "price" : PriceTextField.text!])
 
         DatabaseManager.shared.uploadProduct(with: listingProduct) { success in
             if success {

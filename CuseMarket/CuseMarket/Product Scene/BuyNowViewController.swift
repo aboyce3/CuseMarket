@@ -28,7 +28,6 @@ class BuyNowViewController: UIViewController {
     var productPrice: String?
     var accountid: String?
     let db = Database.database().reference()
-    let ref = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +50,24 @@ class BuyNowViewController: UIViewController {
 
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 self.db.child("Products").child(self.productid!).removeValue()
-                // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+                self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
                 var counter = 0
-                self.ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+                self.db.child("Users").child(self.accountid!).child("Messages").observe(.value, with: { (snapshot: DataSnapshot!) in
                     counter = Int(snapshot.childrenCount) + 1
                 })
-                self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(String(counter)).setValue(["title": self.productTitle!, "price" : self.productPrice!])
-                //self.performSegue(withIdentifier: "returnSegue", sender: self)
+                self.db.child("Users").child(Auth.auth().currentUser!.uid).getData(completion:  { error, snapshot in
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return;
+                    }
+                
+                    guard let dictionary = snapshot.value as? [String : Any] else {return}
+                    let username = dictionary["username"] as! String
+                    print(username)
+                    let m = self.productTitle! + " has sold!"
+                    self.db.child("Users").child(self.accountid!).child("Messages").child(String(counter)).setValue(["message": m, "type" : "Purchase", "username" : username])
+                    self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                });
             })
 
             dialogMessage.addAction(ok)
@@ -70,13 +80,24 @@ class BuyNowViewController: UIViewController {
 
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.db.child("Products").child(self.productid!).removeValue()
-            // self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+            self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
             var counter = 0
-            self.ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+            self.db.child("Users").child(self.accountid!).child("Messages").observe(.value, with: { (snapshot: DataSnapshot!) in
                 counter = Int(snapshot.childrenCount) + 1
             })
-            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(String(counter)).setValue(["title": self.productTitle!, "price" : self.productPrice!])
-            //self.performSegue(withIdentifier: "returnSegue", sender: self)
+            self.db.child("Users").child(Auth.auth().currentUser!.uid).getData(completion:  { error, snapshot in
+                guard error == nil else {
+                    print(error!.localizedDescription)
+                    return;
+                }
+            
+                guard let dictionary = snapshot.value as? [String : Any] else {return}
+                let username = dictionary["username"] as! String
+                print(username)
+                let m = self.productTitle! + " has sold!"
+                self.db.child("Users").child(self.accountid!).child("Messages").child(String(counter)).setValue(["message": m, "type" : "Purchase", "username" : username])
+                self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            });
         })
 
         dialogMessage.addAction(ok)
@@ -88,13 +109,24 @@ class BuyNowViewController: UIViewController {
 
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.db.child("Products").child(self.productid!).removeValue()
-            //self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
+            self.db.child("Users").child(self.accountid!).child("Sellings").child(self.productid!).removeValue()
             var counter = 0
-            self.ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+            self.db.child("Users").child(self.accountid!).child("Messages").observe(.value, with: { (snapshot: DataSnapshot!) in
                 counter = Int(snapshot.childrenCount) + 1
             })
-            self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(String(counter)).setValue(["title": self.productTitle!, "price" : self.productPrice!])
-            self.performSegue(withIdentifier: "returnSegue", sender: self)
+            self.db.child("Users").child(Auth.auth().currentUser!.uid).getData(completion:  { error, snapshot in
+                guard error == nil else {
+                    print(error!.localizedDescription)
+                    return;
+                }
+            
+                guard let dictionary = snapshot.value as? [String : Any] else {return}
+                let username = dictionary["username"] as! String
+                print(username)
+                let m = self.productTitle! + " has sold!"
+                self.db.child("Users").child(self.accountid!).child("Messages").child(String(counter)).setValue(["message": m, "type" : "Purchase", "username" : username])
+                self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            });
         })
 
         dialogMessage.addAction(ok)
