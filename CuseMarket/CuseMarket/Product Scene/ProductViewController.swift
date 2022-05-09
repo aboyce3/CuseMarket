@@ -43,7 +43,6 @@ class ProductViewController: UIViewController {
                 self.productCollectionView.reloadData()
             }
         }
-
     }
 
     func getProductDetails(){

@@ -131,10 +131,10 @@
 		311CD1332820D35F00F94ED0 /* Profile Scene */ = {
 			isa = PBXGroup;
 			children = (
-				59DA5825281F0148002238E9 /* LocationViewController.swift */,
 				59DA5823281F0144002238E9 /* ProfileViewController.swift */,
 				59B2645C2822150B004F2F4F /* InboxViewController.swift */,
 				59488B4B28260CE500B0A9D2 /* InboxTableViewCell.swift */,
+				59DA5825281F0148002238E9 /* LocationViewController.swift */,
 				59B2645E28221532004F2F4F /* SellingViewController.swift */,
 				59488B4D282620E500B0A9D2 /* SellingTableViewCell.swift */,
 				59B2646028221541004F2F4F /* BuyingViewController.swift */,
