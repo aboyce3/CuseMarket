@@ -68,6 +68,7 @@ class BuyNowViewController: UIViewController {
                 let uuid = UUID().uuidString
                 self.db.child("Users").child(self.sellerUserID!).child("Messages").child(uuid).setValue(["message": message, "type" : "Purchased", "username" : self.buyerUsername])
                 self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+                self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
             })
 
             dialogMessage.addAction(ok)
@@ -85,6 +86,7 @@ class BuyNowViewController: UIViewController {
             let uuid = UUID().uuidString
             self.db.child("Users").child(self.sellerUserID!).child("Messages").child(uuid).setValue(["message": message, "type" : "Purchased", "username" : self.buyerUsername])
             self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
         })
 
         dialogMessage.addAction(ok)
@@ -101,6 +103,7 @@ class BuyNowViewController: UIViewController {
             let uuid = UUID().uuidString
             self.db.child("Users").child(self.sellerUserID!).child("Messages").child(uuid).setValue(["message": message, "type" : "Purchased", "username" : self.buyerUsername])
             self.db.child("Users").child(Auth.auth().currentUser!.uid).child("Purchased").child(self.productid!).setValue(["title": self.productTitle!, "price" : self.productPrice!])
+            self.performSegue(withIdentifier: "returnHomeSegue", sender: self)
         })
         
         dialogMessage.addAction(ok)

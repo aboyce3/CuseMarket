@@ -27,7 +27,7 @@ class BuyingTableViewCell: UITableViewCell {
     func setup(title: String, price: String, coverPhoto: UIImage) {
         buyingImageView.image = coverPhoto
         productNameLabel.text = title
-        productPriceLabel.text = "$" + price
+        productPriceLabel.text = price
     }
 
 }
