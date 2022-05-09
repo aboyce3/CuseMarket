@@ -60,6 +60,10 @@ class ListingViewController: UIViewController {
             self.categoryButton.setTitle("House", for: .normal)
             categoryAction.dismiss(animated: true)
         }))
+        categoryAction.addAction(UIAlertAction(title: "Other", style: .default, handler: { action in
+            self.categoryButton.setTitle("House", for: .normal)
+            categoryAction.dismiss(animated: true)
+        }))
         categoryAction.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(categoryAction, animated: true)
     }

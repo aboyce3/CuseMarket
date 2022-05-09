@@ -20,6 +20,3 @@ struct Product: Decodable {
     let productID: String
     // let isSold: Bool
 }
-
-var inboxMessageCount = 0
-var sellingProductCount = 0
