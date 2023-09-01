@@ -83,6 +83,7 @@
 		59DA5827281F016E002238E9 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		59DA5829281F0181002238E9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59DA582B281F06B1002238E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		59E84BDD2AA1726A007075BD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +147,7 @@
 		311E508427FDFD13002A64F7 = {
 			isa = PBXGroup;
 			children = (
+				59E84BDD2AA1726A007075BD /* README.md */,
 				311E508F27FDFD13002A64F7 /* CuseMarket */,
 				311E508E27FDFD13002A64F7 /* Products */,
 			);

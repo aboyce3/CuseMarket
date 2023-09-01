@@ -43,7 +43,6 @@ final class StorageManager {
                 }
             }
         }
-        
     }
     
     func getProductFirstImage(productID: String, completion: @escaping (UIImage?) -> Void) {
@@ -60,6 +59,5 @@ final class StorageManager {
             }
             
         }
-        
     }
 }
